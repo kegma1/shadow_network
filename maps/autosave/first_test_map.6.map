@@ -4,7 +4,7 @@
 {
 "mapversion" "220"
 "classname" "worldspawn"
-"_tb_def" "builtin:shadow_network.fgd"
+"_tb_def" "builtin:QodotEssentials.fgd"
 // brush 0
 {
 ( -208 -32 -16 ) ( -208 -31 -16 ) ( -208 -32 -15 ) __TB_empty [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
@@ -209,45 +209,16 @@
 }
 // entity 2
 {
-"classname" "trigger"
+"classname" "button"
 "target" "house_door"
+"axis" "0 0 1"
 // brush 0
 {
-( -16 -80 0 ) ( -16 -79 0 ) ( -16 -80 1 ) __TB_empty [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -16 -80 0 ) ( -16 -80 1 ) ( -15 -80 0 ) __TB_empty [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -16 -80 0 ) ( -15 -80 0 ) ( -16 -79 0 ) __TB_empty [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
-( 0 -48 40 ) ( 0 -47 40 ) ( 1 -48 40 ) __TB_empty [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
-( 0 -48 8 ) ( 1 -48 8 ) ( 0 -48 9 ) __TB_empty [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( 0 -48 8 ) ( 0 -48 9 ) ( 0 -47 8 ) __TB_empty [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -4 -44 20 ) ( -4 -43 20 ) ( -4 -44 21 ) __TB_empty [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -4 -44 20 ) ( -4 -44 21 ) ( -3 -44 20 ) __TB_empty [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -4 -44 16 ) ( -3 -44 16 ) ( -4 -43 16 ) __TB_empty [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( 0 -36 24 ) ( 0 -35 24 ) ( 1 -36 24 ) __TB_empty [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( 0 -36 24 ) ( 1 -36 24 ) ( 0 -36 25 ) __TB_empty [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 0 -36 24 ) ( 0 -36 25 ) ( 0 -35 24 ) __TB_empty [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
-}
-// entity 3
-{
-"classname" "trigger"
-"target" "sig"
-// brush 0
-{
-( 16 -80 0 ) ( 16 -79 0 ) ( 16 -80 1 ) __TB_empty [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( 16 -80 0 ) ( 16 -80 1 ) ( 17 -80 0 ) __TB_empty [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( 16 -80 0 ) ( 17 -80 0 ) ( 16 -79 0 ) __TB_empty [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
-( 48 -48 48 ) ( 48 -47 48 ) ( 49 -48 48 ) __TB_empty [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
-( 48 -48 16 ) ( 49 -48 16 ) ( 48 -48 17 ) __TB_empty [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( 48 -48 16 ) ( 48 -48 17 ) ( 48 -47 16 ) __TB_empty [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
-}
-}
-// entity 4
-{
-"classname" "signal"
-"origin" "56 -104 8"
-"signal_name" "trigger"
-"targetname" "sig"
-"target" "rec"
-}
-// entity 5
-{
-"classname" "receiver"
-"origin" "56 -104 24"
-"receiver_name" "reverse_motion"
-"target" "house_door"
-"targetname" "rec"
 }
