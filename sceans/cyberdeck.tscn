@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://crr1tdxnkreac"]
+
+[ext_resource type="PackedScene" uid="uid://cxkwa6hhxu1y" path="res://models/cyberdeck.blend" id="1_egueu"]
+[ext_resource type="Texture2D" uid="uid://dxsrssid5jsj4" path="res://models/textures/cyberdeck.png" id="2_vm8mu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tsah4"]
+albedo_texture = ExtResource("2_vm8mu")
+
+[node name="cyberdeck" instance=ExtResource("1_egueu")]
+
+[node name="Cube" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_tsah4")
