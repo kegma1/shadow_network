@@ -1,12 +1,62 @@
-[gd_scene load_steps=4 format=3 uid="uid://crr1tdxnkreac"]
+[gd_scene load_steps=3 format=3 uid="uid://06uklmqv6rdm"]
 
-[ext_resource type="PackedScene" uid="uid://cxkwa6hhxu1y" path="res://models/cyberdeck.blend" id="1_egueu"]
-[ext_resource type="Texture2D" uid="uid://dxsrssid5jsj4" path="res://models/textures/cyberdeck.png" id="2_vm8mu"]
+[ext_resource type="PackedScene" uid="uid://b7od3kutg6fka" path="res://models/cyberdeck.blend" id="1_jk7e8"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tsah4"]
-albedo_texture = ExtResource("2_vm8mu")
+[sub_resource type="ViewportTexture" id="ViewportTexture_prbj5"]
+viewport_path = NodePath("SubViewport")
 
-[node name="cyberdeck" instance=ExtResource("1_egueu")]
+[node name="Cyberdeck" type="Node3D"]
 
-[node name="Cube" parent="." index="0"]
-material_override = SubResource("StandardMaterial3D_tsah4")
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(902, 272)
+
+[node name="Control" type="Control" parent="SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.180392, 0.180392, 0.180392, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SubViewport/Control/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "mordi
+mordi
+mordi
+mordi
+mordi
+mordi
+mordi
+
+
+mordi
+mordi
+mordi
+mordi
+mordi
+mordi
+mordi
+mordi
+
+hallo
+"
+
+[node name="cyberdeck" parent="." instance=ExtResource("1_jk7e8")]
+
+[node name="MainScreen" type="Sprite3D" parent="cyberdeck"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.29558, 0.55249, -0.691506)
+texture = SubResource("ViewportTexture_prbj5")
