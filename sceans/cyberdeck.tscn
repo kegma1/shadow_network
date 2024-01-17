@@ -50,12 +50,15 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "dsadsaigoghjghjkgjkdsadwa"
 metadata/_edit_use_anchors_ = true
 
 [node name="ConsolePrompt" type="LineEdit" parent="MainScreen/Control/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Enter command..."
 
 [node name="SubMonitorContainer" type="PanelContainer" parent="MainScreen/Control/VBoxContainer"]
 layout_mode = 2
@@ -66,6 +69,31 @@ layout_mode = 2
 texture = SubResource("ViewportTexture_c0441")
 
 [node name="SubMonitor" type="SubViewport" parent="."]
+size_2d_override_stretch = true
 
-[node name="Camera3D" type="Camera3D" parent="SubMonitor"]
-transform = Transform3D(1, 0, 0, 0, 0.144909, 0.989445, 0, -0.989445, 0.144909, 0, 17.0463, 0)
+[node name="Control" type="Control" parent="SubMonitor"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="SubMonitor/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="app1" type="PanelContainer" parent="SubMonitor/Control/TabContainer"]
+layout_mode = 2
+
+[node name="app2" type="PanelContainer" parent="SubMonitor/Control/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="app3" type="PanelContainer" parent="SubMonitor/Control/TabContainer"]
+visible = false
+layout_mode = 2
