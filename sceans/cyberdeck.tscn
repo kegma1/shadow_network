@@ -71,6 +71,7 @@ layout_mode = 2
 texture = SubResource("ViewportTexture_c0441")
 
 [node name="SubMonitor" type="SubViewport" parent="."]
+size = Vector2i(512, 324)
 size_2d_override_stretch = true
 
 [node name="Control" type="Control" parent="SubMonitor"]
