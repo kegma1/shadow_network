@@ -34,29 +34,6 @@ tracks/1/keys = {
 "values": [Vector3(-0.258, -0.164, -0.43)]
 }
 
-[sub_resource type="Animation" id="Animation_1jebg"]
-resource_name = "switch_to_cyberdeck"
-length = 0.5
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Rig/Camera3D/Cyberdeck")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, -0.258, -0.164, -0.43, 0.5, 1, 0.057, -0.039, -0.165)
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Rig/Camera3D/Cyberdeck:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.112656, 0.120742),
-"update": 0,
-"values": [Vector3(1.48353, 0.139626, 0), Vector3(1.5708, 0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_1cfb4"]
 resource_name = "switch_from_cyberdeck"
 length = 0.5
@@ -85,6 +62,29 @@ tracks/1/keys = {
 "values": [Vector3(1.5708, 0, 0), Vector3(1.48353, 0.139626, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_1jebg"]
+resource_name = "switch_to_cyberdeck"
+length = 0.5
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rig/Camera3D/Cyberdeck")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.258, -0.164, -0.43, 0.5, 1, 0.057, -0.039, -0.165)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rig/Camera3D/Cyberdeck:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.112656, 0.120742),
+"update": 0,
+"values": [Vector3(1.48353, 0.139626, 0), Vector3(1.5708, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_46oas"]
 _data = {
 "RESET": SubResource("Animation_qqdrv"),
@@ -108,7 +108,7 @@ mesh = SubResource("CapsuleMesh_cq0c0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Cyberdeck" parent="Rig/Camera3D" instance=ExtResource("2_b7eus")]
-transform = Transform3D(0.0346594, 0.00485252, 0.000424541, 0, 0.00305045, -0.0348668, -0.00487106, 0.0345275, 0.00302076, -0.258, -0.164, -0.43)
+transform = Transform3D(0.0346594, 0.00485251, 0.000424539, 0, 0.00305045, -0.0348668, -0.00487105, 0.0345275, 0.00302076, -0.258, -0.164, -0.43)
 
 [node name="StairsBelow" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)

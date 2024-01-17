@@ -1,102 +1,42 @@
-[gd_scene load_steps=5 format=3 uid="uid://06uklmqv6rdm"]
+[gd_scene load_steps=8 format=3 uid="uid://06uklmqv6rdm"]
 
 [ext_resource type="Script" path="res://scripts/cyberdeck.gd" id="1_f0u0q"]
 [ext_resource type="PackedScene" uid="uid://b7od3kutg6fka" path="res://models/cyberdeck.blend" id="1_jk7e8"]
+[ext_resource type="PackedScene" uid="uid://6dk2tjowock1" path="res://sceans/cyberdeck_ui.tscn" id="3_ukooc"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_honwl"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_08mwc"]
 viewport_path = NodePath("MainScreen")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_c0441"]
-viewport_path = NodePath("SubMonitor")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_llwjn"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_08mwc")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3bqrq"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_llwjn")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jlkcy"]
+size = Vector3(18.9371, 0.412842, 5.85522)
 
 [node name="Cyberdeck" type="Node3D"]
 script = ExtResource("1_f0u0q")
 
 [node name="cyberdeck" parent="." instance=ExtResource("1_jk7e8")]
 
-[node name="MainScreen" type="Sprite3D" parent="cyberdeck"]
-transform = Transform3D(0.465, 0, 0, 0, -2.03258e-08, 0.465, 0, -0.465, -2.03258e-08, -5.79915, 0.55249, 0.669287)
-centered = false
-texture = SubResource("ViewportTexture_honwl")
+[node name="MainScreen" type="MeshInstance3D" parent="cyberdeck"]
+transform = Transform3D(4.405, 0, 0, 0, 1, 0, 0, 0, 1.355, -1.397, 0.558, -0.69)
+mesh = SubResource("PlaneMesh_3bqrq")
+
+[node name="Area3D" type="Area3D" parent="cyberdeck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0333765, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cyberdeck/Area3D"]
+transform = Transform3D(0.465, 0, 0, 0, 0.465, 0, 0, 0, 0.465, -1.39726, 0.589004, -0.689724)
+shape = SubResource("BoxShape3D_jlkcy")
 
 [node name="MainScreen" type="SubViewport" parent="."]
 size = Vector2i(1897, 585)
 size_2d_override_stretch = true
 
-[node name="Control" type="Control" parent="MainScreen"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_stretch_ratio = 0.0
-
-[node name="VBoxContainer" type="HBoxContainer" parent="MainScreen/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainScreen/Control/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ConsoleContainer" type="PanelContainer" parent="MainScreen/Control/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="ConsoleText" type="RichTextLabel" parent="MainScreen/Control/VBoxContainer/VBoxContainer/ConsoleContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 32
-bbcode_enabled = true
-text = "dsadsaigoghjghjkgjkdsadwa"
-metadata/_edit_use_anchors_ = true
-
-[node name="ConsolePrompt" type="LineEdit" parent="MainScreen/Control/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-placeholder_text = "Enter command..."
-
-[node name="SubMonitorContainer" type="PanelContainer" parent="MainScreen/Control/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="SubMonitorDisplay" type="TextureRect" parent="MainScreen/Control/VBoxContainer/SubMonitorContainer"]
-layout_mode = 2
-texture = SubResource("ViewportTexture_c0441")
-
-[node name="SubMonitor" type="SubViewport" parent="."]
-size = Vector2i(512, 324)
-size_2d_override_stretch = true
-
-[node name="Control" type="Control" parent="SubMonitor"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TabContainer" type="TabContainer" parent="SubMonitor/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="app1" type="PanelContainer" parent="SubMonitor/Control/TabContainer"]
-layout_mode = 2
-
-[node name="app2" type="PanelContainer" parent="SubMonitor/Control/TabContainer"]
-visible = false
-layout_mode = 2
-
-[node name="app3" type="PanelContainer" parent="SubMonitor/Control/TabContainer"]
-visible = false
-layout_mode = 2
+[node name="ui" parent="MainScreen" instance=ExtResource("3_ukooc")]
