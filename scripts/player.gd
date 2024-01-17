@@ -30,6 +30,7 @@ var gravity = 9.8
 @onready var collision_shape = $Shape
 
 @onready var animation_player = $AnimationPlayer
+@onready var cyberdeck = $Rig/Camera3D/Cyberdeck
 
 var cyberdeck_focus = false
 
@@ -71,10 +72,12 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("switch_cyberdeck") :
 		if cyberdeck_focus:
 			animation_player.play("switch_from_cyberdeck")
+			cyberdeck.screen_on = false
 			cyberdeck_focus = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		else:
 			animation_player.play("switch_to_cyberdeck")
+			cyberdeck.screen_on = true
 			cyberdeck_focus = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			

@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://06uklmqv6rdm"]
+[gd_scene load_steps=5 format=3 uid="uid://06uklmqv6rdm"]
 
+[ext_resource type="Script" path="res://scripts/cyberdeck.gd" id="1_f0u0q"]
 [ext_resource type="PackedScene" uid="uid://b7od3kutg6fka" path="res://models/cyberdeck.blend" id="1_jk7e8"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_honwl"]
@@ -9,6 +10,7 @@ viewport_path = NodePath("MainScreen")
 viewport_path = NodePath("SubMonitor")
 
 [node name="Cyberdeck" type="Node3D"]
+script = ExtResource("1_f0u0q")
 
 [node name="cyberdeck" parent="." instance=ExtResource("1_jk7e8")]
 
