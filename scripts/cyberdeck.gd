@@ -1,9 +1,8 @@
 extends Node3D
 
-@onready var main_screen = $cyberdeck/MainScreen
+@onready var main_screen = $MainScreenMesh
 @onready var main_screen_vp = $MainScreen
-@onready var screen_area = $cyberdeck/Area3D
-
+@onready var screen_area = $Area3D
 
 @export var screen_on := false : set = _set_display_on
 
@@ -16,6 +15,7 @@ var mouse_inside = false
 var last_mouse_pos_3D = null
 var last_mouse_pos_2D = null
 
+
 func _set_display_on(new_state):
 	if new_state:
 		main_screen.show()
@@ -27,12 +27,13 @@ func _set_display_on(new_state):
 func _ready():
 	main_screen.hide()
 	screen_area.mouse_entered.connect(func(): mouse_entered = true)
+	screen_area.mouse_exited.connect(func(): mouse_entered = false)
 	main_screen_vp.set_process_input(true)
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if screen_on:
 		var is_mouse_event = false
-		if event is InputEventMouseMotion or event is InputEventMouseButton:
+		if event is InputEventMouse or event is InputEventMouseMotion or event is InputEventMouseButton:
 			is_mouse_event = true
 		
 		if mouse_entered and (is_mouse_event or mouse_held):
@@ -57,16 +58,17 @@ func handel_mouse(event):
 		mouse_pos3D = last_mouse_pos_3D
 		if mouse_pos3D == null:
 			mouse_pos3D = Vector3.ZERO
-	var mouse_pos2D = Vector2(mouse_pos3D.x, -mouse_pos3D.y)
+			
+	var mouse_pos2D = Vector2(mouse_pos3D.x, mouse_pos3D.z)
 		
 	mouse_pos2D.x += mesh_size.x / 2
 	mouse_pos2D.y += mesh_size.y / 2
 	
-	mouse_pos2D.x = mouse_pos2D.x / mesh_size.x
-	mouse_pos2D.y = mouse_pos2D.y / mesh_size.y
+	mouse_pos2D.x = mouse_pos2D.x / mesh_size.y
+	mouse_pos2D.y = mouse_pos2D.y / mesh_size.x
 	
-	mouse_pos2D.x = mouse_pos2D.x * main_screen_vp.size.x
-	mouse_pos2D.y = mouse_pos2D.y * main_screen_vp.size.y
+	mouse_pos2D.x = mouse_pos2D.x * main_screen_vp.size.y
+	mouse_pos2D.y = mouse_pos2D.y * main_screen_vp.size.x
 	
 	event.position = mouse_pos2D
 	event.global_position = mouse_pos2D
@@ -79,6 +81,8 @@ func handel_mouse(event):
 			
 	last_mouse_pos_2D = mouse_pos2D
 	main_screen_vp.push_input(event)
+	
+	#print(last_mouse_pos_2D)
 
 func find_mouse(pos:Vector2):
 	var camera = get_viewport().get_camera_3d()

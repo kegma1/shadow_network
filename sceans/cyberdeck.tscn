@@ -4,39 +4,40 @@
 [ext_resource type="PackedScene" uid="uid://b7od3kutg6fka" path="res://models/cyberdeck.blend" id="1_jk7e8"]
 [ext_resource type="PackedScene" uid="uid://6dk2tjowock1" path="res://sceans/cyberdeck_ui.tscn" id="3_ukooc"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_08mwc"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_su5gw"]
 viewport_path = NodePath("MainScreen")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_llwjn"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_238uy"]
 resource_local_to_scene = true
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_08mwc")
+albedo_texture = SubResource("ViewportTexture_su5gw")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_3bqrq"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_llwjn")
+[sub_resource type="PlaneMesh" id="PlaneMesh_dvcj4"]
+size = Vector2(8.795, 2.715)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jlkcy"]
-size = Vector3(18.9371, 0.412842, 5.85522)
+size = Vector3(18.9371, 0.142334, 5.85522)
 
 [node name="Cyberdeck" type="Node3D"]
 script = ExtResource("1_f0u0q")
 
-[node name="cyberdeck" parent="." instance=ExtResource("1_jk7e8")]
+[node name="MainScreenMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.397, 0.558, -0.69)
+material_override = SubResource("StandardMaterial3D_238uy")
+mesh = SubResource("PlaneMesh_dvcj4")
 
-[node name="MainScreen" type="MeshInstance3D" parent="cyberdeck"]
-transform = Transform3D(4.405, 0, 0, 0, 1, 0, 0, 0, 1.355, -1.397, 0.558, -0.69)
-mesh = SubResource("PlaneMesh_3bqrq")
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39726, 0.676589, -0.689724)
 
-[node name="Area3D" type="Area3D" parent="cyberdeck"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0333765, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="cyberdeck/Area3D"]
-transform = Transform3D(0.465, 0, 0, 0, 0.465, 0, 0, 0, 0.465, -1.39726, 0.589004, -0.689724)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.465, 0, 0, 0, 0.465, 0, 0, 0, 0.465, 0, -0.150478, 0)
 shape = SubResource("BoxShape3D_jlkcy")
 
+[node name="cyberdeck" parent="." instance=ExtResource("1_jk7e8")]
+
 [node name="MainScreen" type="SubViewport" parent="."]
+handle_input_locally = false
 size = Vector2i(1897, 585)
-size_2d_override_stretch = true
+render_target_update_mode = 4
 
 [node name="ui" parent="MainScreen" instance=ExtResource("3_ukooc")]

@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://6dk2tjowock1"]
+[gd_scene load_steps=2 format=3 uid="uid://6dk2tjowock1"]
+
+[ext_resource type="Script" path="res://scripts/cyberdeck_ui.gd" id="1_osi6j"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_osi6j")
 
 [node name="VBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -42,25 +45,10 @@ placeholder_text = "Enter command..."
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="VBoxContainer/SubMonitorContainer"]
+[node name="Control" type="Control" parent="VBoxContainer/SubMonitorContainer"]
 layout_mode = 2
-stretch = true
 
-[node name="SubMonitor" type="SubViewport" parent="VBoxContainer/SubMonitorContainer/SubViewportContainer"]
-handle_input_locally = false
-size = Vector2i(958, 1080)
-size_2d_override_stretch = true
-render_target_update_mode = 4
-
-[node name="Control" type="Control" parent="VBoxContainer/SubMonitorContainer/SubViewportContainer/SubMonitor"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TabContainer" type="TabContainer" parent="VBoxContainer/SubMonitorContainer/SubViewportContainer/SubMonitor/Control"]
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer/SubMonitorContainer/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -68,13 +56,37 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="app1" type="PanelContainer" parent="VBoxContainer/SubMonitorContainer/SubViewportContainer/SubMonitor/Control/TabContainer"]
-layout_mode = 2
-
-[node name="app2" type="PanelContainer" parent="VBoxContainer/SubMonitorContainer/SubViewportContainer/SubMonitor/Control/TabContainer"]
+[node name="app1" type="PanelContainer" parent="VBoxContainer/SubMonitorContainer/Control/TabContainer"]
 visible = false
 layout_mode = 2
 
-[node name="app3" type="PanelContainer" parent="VBoxContainer/SubMonitorContainer/SubViewportContainer/SubMonitor/Control/TabContainer"]
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/SubMonitorContainer/Control/TabContainer/app1"]
+layout_mode = 2
+columns = 3
+
+[node name="Button3" type="Button" parent="VBoxContainer/SubMonitorContainer/Control/TabContainer/app1/GridContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="Button2" type="Button" parent="VBoxContainer/SubMonitorContainer/Control/TabContainer/app1/GridContainer"]
+layout_mode = 2
+text = "2"
+
+[node name="Button" type="Button" parent="VBoxContainer/SubMonitorContainer/Control/TabContainer/app1/GridContainer"]
+layout_mode = 2
+text = "3"
+
+[node name="Button4" type="Button" parent="VBoxContainer/SubMonitorContainer/Control/TabContainer/app1/GridContainer"]
+layout_mode = 2
+text = "4"
+
+[node name="Button5" type="Button" parent="VBoxContainer/SubMonitorContainer/Control/TabContainer/app1/GridContainer"]
+layout_mode = 2
+text = "5"
+
+[node name="app2" type="PanelContainer" parent="VBoxContainer/SubMonitorContainer/Control/TabContainer"]
+layout_mode = 2
+
+[node name="app3" type="PanelContainer" parent="VBoxContainer/SubMonitorContainer/Control/TabContainer"]
 visible = false
 layout_mode = 2
