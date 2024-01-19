@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://ds4uxaca8id02"]
+[gd_scene load_steps=70 format=3 uid="uid://ds4uxaca8id02"]
 
 [ext_resource type="Script" path="res://addons/qodot/src/nodes/qodot_map.gd" id="1_6fjoc"]
 [ext_resource type="Resource" uid="uid://c36hv0o6g0udo" path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" id="2_1yob4"]
@@ -7,6 +7,11 @@
 [ext_resource type="Script" path="res://addons/qodot/game_definitions/fgd/solid_classes/trigger.gd" id="4_lk15e"]
 [ext_resource type="Texture2D" uid="uid://yfb68x051she" path="res://addons/kenney_prototype_textures/orange/texture_02.png" id="5_3teo3"]
 [ext_resource type="PackedScene" uid="uid://df788lihsrota" path="res://sceans/player.tscn" id="5_ksms5"]
+[ext_resource type="PackedScene" uid="uid://rx5hdeqgldia" path="res://models/home_router.blend" id="8_hbi46"]
+[ext_resource type="PackedScene" uid="uid://bya5a0ibmc5nm" path="res://models/server.blend" id="9_i5irv"]
+[ext_resource type="PackedScene" uid="uid://baow1vweb6168" path="res://models/camera.blend" id="10_bcplr"]
+[ext_resource type="PackedScene" uid="uid://6o64y736sqmk" path="res://models/wall_port.blend" id="11_igs8h"]
+[ext_resource type="PackedScene" uid="uid://revdxhd3s4cd" path="res://models/switch.blend" id="12_mi7mj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l84od"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -397,6 +402,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.93879, -4.81524)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.214957, 0.976624, 0, -0.976624, -0.214957, 0, 13.7664, 2.86686)
+
+[node name="network" type="Node" parent="."]
+
+[node name="home_router" parent="." instance=ExtResource("8_hbi46")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 7.44381, 1.77428, -4.66161)
+
+[node name="server" parent="." instance=ExtResource("9_i5irv")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 7.59276, 2.16005, -7.70135)
+
+[node name="camera" parent="." instance=ExtResource("10_bcplr")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 7.23903, 1.9932, -2.91425)
+
+[node name="wall_port" parent="." instance=ExtResource("11_igs8h")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 7.79515, 1.0511, -6.48128)
+
+[node name="switch" parent="." instance=ExtResource("12_mi7mj")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 7.06815, 3.39958, -5.2106)
 
 [connection signal="trigger" from="QodotMap/entity_2_trigger" to="QodotMap/entity_1_mover" method="use"]
 [connection signal="trigger" from="QodotMap/entity_3_trigger" to="QodotMap/entity_1_mover" method="reverse_motion"]
