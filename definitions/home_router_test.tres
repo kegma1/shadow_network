@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=3 format=3 uid="uid://dc428gnghg10b"]
+
+[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="1_1nq8x"]
+[ext_resource type="PackedScene" uid="uid://docexo1vmsxgb" path="res://sceans/network/physical/home_router_TEST.tscn" id="1_dyt7b"]
+
+[resource]
+script = ExtResource("1_1nq8x")
+scene_file = ExtResource("1_dyt7b")
+apply_rotation_on_map_build = true
+classname = "HomeRouterTest"
+description = "test object for home router"
+qodot_internal = false
+base_classes = Array[Resource]([])
+class_properties = {
+"devices": PackedStringArray(),
+"host_address": &"",
+"hostname": &""
+}
+class_property_descriptions = {}
+meta_properties = {
+"color": Color(0.8, 0.8, 0.8, 1),
+"size": AABB(-4, -4, -4, 4, 4, 4)
+}
+node_class = ""
+transient_node = false

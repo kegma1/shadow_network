@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://61fk4sjvu142"]
+
+[ext_resource type="PackedScene" uid="uid://revdxhd3s4cd" path="res://models/switch.blend" id="1_2raip"]
+[ext_resource type="Script" path="res://scripts/network/physical_device.gd" id="1_gc45d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m1k3u"]
+size = Vector3(0.567871, 0.0838928, 0.220337)
+
+[node name="SwitchTest" type="Node3D"]
+script = ExtResource("1_gc45d")
+
+[node name="switch" parent="." instance=ExtResource("1_2raip")]
+transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, 0, -0.2, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0012207, -0.199722, 0.000183105)
+shape = SubResource("BoxShape3D_m1k3u")

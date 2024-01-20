@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=3 format=3 uid="uid://d1dpklrcotx3g"]
+
+[ext_resource type="PackedScene" uid="uid://6t505krmqrd5" path="res://sceans/network/physical/wall_jack_TEST.tscn" id="1_8dld8"]
+[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="1_61rc8"]
+
+[resource]
+script = ExtResource("1_61rc8")
+scene_file = ExtResource("1_8dld8")
+apply_rotation_on_map_build = true
+classname = "WallJackTEST"
+description = "test for wall jacks"
+qodot_internal = false
+base_classes = Array[Resource]([])
+class_properties = {
+"host_address": &""
+}
+class_property_descriptions = {}
+meta_properties = {
+"color": Color(0.8, 0.8, 0.8, 1),
+"size": AABB(-4, -2, -4, 4, 4, 4)
+}
+node_class = ""
+transient_node = false

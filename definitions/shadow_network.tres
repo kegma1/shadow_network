@@ -1,8 +1,11 @@
-[gd_resource type="Resource" script_class="QodotFGDFile" load_steps=4 format=3 uid="uid://b5kacl6nf3486"]
+[gd_resource type="Resource" script_class="QodotFGDFile" load_steps=7 format=3 uid="uid://b5kacl6nf3486"]
 
 [ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_file.gd" id="1_10glj"]
 [ext_resource type="Resource" uid="uid://c36hv0o6g0udo" path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" id="1_j3d4x"]
-[ext_resource type="Resource" uid="uid://ccwosedfa8v8d" path="res://addons/qodot/game_definitions/fgd/point_classes/light_point_class.tres" id="2_4pwwi"]
+[ext_resource type="Resource" uid="uid://b3nw62uug8g5e" path="res://definitions/home_server_test.tres" id="2_0ny0f"]
+[ext_resource type="Resource" uid="uid://veui5dye0asm" path="res://definitions/switch_test.tres" id="3_d03kf"]
+[ext_resource type="Resource" uid="uid://dc428gnghg10b" path="res://definitions/home_router_test.tres" id="4_fdvm6"]
+[ext_resource type="Resource" uid="uid://d1dpklrcotx3g" path="res://definitions/wall_jack_test.tres" id="5_ekhd1"]
 
 [resource]
 script = ExtResource("1_10glj")
@@ -10,4 +13,4 @@ export_file = false
 target_folder = ""
 fgd_name = "shadow_network"
 base_fgd_files = Array[Resource]([ExtResource("1_j3d4x")])
-entity_definitions = Array[Resource]([ExtResource("2_4pwwi")])
+entity_definitions = Array[Resource]([ExtResource("2_0ny0f"), ExtResource("3_d03kf"), ExtResource("4_fdvm6"), ExtResource("5_ekhd1")])

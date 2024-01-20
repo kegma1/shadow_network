@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="QodotFGDPointClass" load_steps=3 format=3 uid="uid://b3nw62uug8g5e"]
+
+[ext_resource type="Script" path="res://addons/qodot/src/resources/game-definitions/fgd/qodot_fgd_point_class.gd" id="1_rlq6c"]
+[ext_resource type="PackedScene" uid="uid://86w5a2bqjtjh" path="res://sceans/network/physical/home_server_TEST.tscn" id="1_tf3ml"]
+
+[resource]
+script = ExtResource("1_rlq6c")
+scene_file = ExtResource("1_tf3ml")
+apply_rotation_on_map_build = true
+classname = "HomeServerTEST"
+description = "testing if this works how i think"
+qodot_internal = false
+base_classes = Array[Resource]([])
+class_properties = {
+"host_address": &"",
+"hostname": &""
+}
+class_property_descriptions = {}
+meta_properties = {
+"color": Color(0.8, 0.8, 0.8, 1),
+"size": AABB(-8, -4, -4, 8, 4, 4)
+}
+node_class = "Node3D"
+transient_node = false
