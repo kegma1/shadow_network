@@ -501,7 +501,7 @@
 "classname" "WallJackTEST"
 "origin" "100 -30 4"
 "angle" "90"
-"host_address" "192.168.0.3"
+"host_address" "10.0.0.4"
 "device_type" "wall_port"
 }
 // entity 11
@@ -509,9 +509,9 @@
 "classname" "HomeRouterTest"
 "origin" "92 -28 4"
 "angle" "90"
-"hostname" "testnet2"
-"host_address" "192.168.0.1"
-"devices" "192.168.0.2,192.168.0.4"
+"hostname" "testnet1"
+"host_address" "10.0.0.1"
+"devices" "10.0.0.2,10.0.0.4"
 "device_type" "router"
 }
 // entity 12
@@ -519,9 +519,9 @@
 "classname" "SwitchTEST"
 "origin" "84 -28 4"
 "angle" "90"
-"host_address" "192.168.0.2"
-"devices" "192.168.0.3"
-"hostname" "testSwitch3"
+"host_address" "10.0.0.2"
+"devices" "10.0.0.3"
+"hostname" "testSwitch1"
 "device_type" "switch"
 }
 // entity 13
@@ -529,17 +529,7 @@
 "classname" "HomeServerTEST"
 "origin" "72 -28 4"
 "angle" "180"
-"hostname" "hemmeligshit"
-"host_address" "192.168.0.5"
+"hostname" "epic_gamer_server"
+"host_address" "10.0.0.3"
 "device_type" "server"
-}
-// entity 14
-{
-"classname" "SwitchTEST"
-"origin" "84 -28 20"
-"angle" "90"
-"host_address" "192.168.0.4"
-"devices" "192.168.0.5"
-"hostname" "testSwitch2"
-"device_type" "switch"
 }

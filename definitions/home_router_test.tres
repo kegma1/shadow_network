@@ -12,6 +12,7 @@ description = "test object for home router"
 qodot_internal = false
 base_classes = Array[Resource]([])
 class_properties = {
+"device_type": &"",
 "devices": PackedStringArray(),
 "host_address": &"",
 "hostname": &""

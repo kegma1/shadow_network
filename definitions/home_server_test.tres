@@ -12,6 +12,7 @@ description = "testing if this works how i think"
 qodot_internal = false
 base_classes = Array[Resource]([])
 class_properties = {
+"device_type": &"",
 "host_address": &"",
 "hostname": &""
 }
