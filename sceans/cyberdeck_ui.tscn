@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://6dk2tjowock1"]
+[gd_scene load_steps=4 format=3 uid="uid://6dk2tjowock1"]
 
 [ext_resource type="Script" path="res://scripts/cyberdeck_ui.gd" id="1_osi6j"]
+[ext_resource type="Theme" uid="uid://j581ls8wdpfr" path="res://themes/terminal_theme.tres" id="1_p32at"]
 [ext_resource type="PackedScene" uid="uid://dgegary57sbpr" path="res://sceans/terminal.tscn" id="2_t4th5"]
 
 [node name="Control" type="Control"]
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_p32at")
 script = ExtResource("1_osi6j")
 
 [node name="VBoxContainer" type="HBoxContainer" parent="."]
@@ -22,6 +24,7 @@ grow_vertical = 2
 
 [node name="terminal" parent="VBoxContainer" instance=ExtResource("2_t4th5")]
 layout_mode = 2
+application_screen_target = NodePath("../AplicationScreen")
 
 [node name="AplicationScreen" type="Control" parent="VBoxContainer"]
 layout_mode = 2

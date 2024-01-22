@@ -1,4 +1,10 @@
-[gd_scene format=3 uid="uid://dgegary57sbpr"]
+[gd_scene load_steps=6 format=3 uid="uid://dgegary57sbpr"]
+
+[ext_resource type="Theme" uid="uid://j581ls8wdpfr" path="res://themes/terminal_theme.tres" id="1_ir85h"]
+[ext_resource type="Script" path="res://scripts/terminal.gd" id="2_ub4kp"]
+[ext_resource type="Script" path="res://scripts/command_handeler.gd" id="3_35v3s"]
+[ext_resource type="Script" path="res://scripts/command_module.gd" id="3_a3hmq"]
+[ext_resource type="Script" path="res://scripts/command.gd" id="3_fslvl"]
 
 [node name="Control" type="PanelContainer"]
 anchors_preset = 15
@@ -7,6 +13,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
+theme = ExtResource("1_ir85h")
+script = ExtResource("2_ub4kp")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -20,10 +28,36 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 32
+theme = ExtResource("1_ir85h")
 bbcode_enabled = true
+text = "
+"
 metadata/_edit_use_anchors_ = true
 
 [node name="ConsolePrompt" type="LineEdit" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+placeholder_text = "Enter command ..."
+
+[node name="command_handeler" type="Node" parent="."]
+script = ExtResource("3_35v3s")
+
+[node name="Console" type="Node" parent="command_handeler"]
+script = ExtResource("3_a3hmq")
+command_handler_target = NodePath("..")
+module_description = "Base utilities for basic console use."
+
+[node name="echo" type="Node" parent="command_handeler/Console"]
+script = ExtResource("3_fslvl")
+argument_names = Array[String](["message"])
+argument_types = Array[int]([2])
+help = "Echos the message given to the console."
+
+[node name="cls" type="Node" parent="command_handeler/Console"]
+script = ExtResource("3_fslvl")
+help = "Clears the screen of all text"
+
+[node name="help" type="Node" parent="command_handeler/Console"]
+script = ExtResource("3_fslvl")
+help = "You just used this command meow-fucka, read the screen and figure it out."
+
+[connection signal="text_submitted" from="VBoxContainer/ConsolePrompt" to="." method="_on_console_prompt_text_submitted"]
