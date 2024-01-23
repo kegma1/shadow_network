@@ -52,6 +52,9 @@ func create_network_device(dev: PhysicalDevice) -> NetworkDevice:
 	new_node.address = dev.properties["host_address"]
 	new_node.type = dev.properties["device_type"]
 	
+	dev.abstract_device = new_node
+	new_node.physical_device = dev
+	
 	if "hostname" in dev.properties:
 		new_node.name = dev.properties["hostname"]
 	else:

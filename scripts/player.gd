@@ -32,7 +32,20 @@ var gravity = 9.8
 @onready var animation_player = $AnimationPlayer
 @onready var cyberdeck = $Rig/Camera3D/Cyberdeck
 
-var cyberdeck_focus = false
+var cyberdeck_focus = false : 
+	set(new_value):
+		if cyberdeck_focus == new_value:
+			return
+		
+		if not new_value:
+			animation_player.play("switch_from_cyberdeck")
+			cyberdeck_focus = false
+			cyberdeck.emit_signal("disconnect_from_port")
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		else:
+			animation_player.play("switch_to_cyberdeck")
+			cyberdeck_focus = true
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -70,16 +83,15 @@ func _physics_process(delta):
 		get_tree().quit()
 	
 	if Input.is_action_just_pressed("switch_cyberdeck") :
-		if cyberdeck_focus:
-			animation_player.play("switch_from_cyberdeck")
-			cyberdeck.screen_on = false
-			cyberdeck_focus = false
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		else:
-			animation_player.play("switch_to_cyberdeck")
-			cyberdeck.screen_on = true
-			cyberdeck_focus = true
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		cyberdeck_focus = not cyberdeck_focus
+		#if cyberdeck_focus:
+			#animation_player.play("switch_from_cyberdeck")
+			#cyberdeck_focus = false
+			#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		#else:
+			#animation_player.play("switch_to_cyberdeck")
+			#cyberdeck_focus = true
+			#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			
 	speed = WALK_SPEED
 	
@@ -131,14 +143,23 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	_snap_down_to_stairs_check()
-	_juice_camera(delta)
 
-func _juice_camera(delta):
-	pass 
+
 	
 func _headbob(time) -> Vector3:
 	var pos = Vector3.ZERO
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
 	return pos
+
+func connect_to(device: PhysicalDevice):
+	# this should not be possible in normal gameplay
+	if cyberdeck_focus:
+		return
+	
+	var abstract_device = device.abstract_device
+	cyberdeck.emit_signal("connect_to_port", abstract_device)
+	cyberdeck_focus = true
+	
+	
 

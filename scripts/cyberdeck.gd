@@ -6,6 +6,9 @@ extends Node3D
 
 @export var screen_on := false : set = _set_display_on
 
+signal connect_to_port(port: NetworkDevice)
+signal disconnect_from_port
+
 var mesh_size = Vector2()
 
 var mouse_entered = false

@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://df788lihsrota"]
+[gd_scene load_steps=11 format=3 uid="uid://df788lihsrota"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_l0fe4"]
 [ext_resource type="PackedScene" uid="uid://06uklmqv6rdm" path="res://sceans/cyberdeck.tscn" id="2_b7eus"]
+[ext_resource type="Texture2D" uid="uid://cuaprlif0gvsd" path="res://textures/ui_tesxtures/crosshair.png" id="3_gub6j"]
+[ext_resource type="Script" path="res://scripts/lookray.gd" id="3_qnmx3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ii836"]
 
@@ -33,6 +35,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(-0.258, -0.164, -0.43)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rig/Camera3D/Cyberdeck:screen_on")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_1cfb4"]
 resource_name = "switch_from_cyberdeck"
@@ -61,6 +75,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(1.5708, 0, 0), Vector3(1.48353, 0.139626, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rig/Camera3D/Cyberdeck:screen_on")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.0002, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, false]
+}
 
 [sub_resource type="Animation" id="Animation_1jebg"]
 resource_name = "switch_to_cyberdeck"
@@ -83,6 +109,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(0.112656, 0.120742),
 "update": 0,
 "values": [Vector3(1.48353, 0.139626, 0), Vector3(1.5708, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rig/Camera3D/Cyberdeck:screen_on")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_46oas"]
@@ -110,6 +148,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 [node name="Cyberdeck" parent="Rig/Camera3D" instance=ExtResource("2_b7eus")]
 transform = Transform3D(0.0346594, 0.00485251, 0.000424539, 0, 0.00305045, -0.0348668, -0.00487105, 0.0345275, 0.00302076, -0.258, -0.164, -0.43)
 
+[node name="lookray" type="RayCast3D" parent="Rig/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+script = ExtResource("3_qnmx3")
+
 [node name="StairsBelow" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 target_position = Vector3(0, -0.05, 0)
@@ -118,3 +160,31 @@ target_position = Vector3(0, -0.05, 0)
 libraries = {
 "": SubResource("AnimationLibrary_46oas")
 }
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.5
+offset_top = -4.5
+offset_right = 4.5
+offset_bottom = 4.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("3_gub6j")
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.5
+offset_right = 20.5
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 0

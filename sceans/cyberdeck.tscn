@@ -41,3 +41,4 @@ size = Vector2i(1897, 585)
 render_target_update_mode = 4
 
 [node name="ui" parent="MainScreen" instance=ExtResource("3_ukooc")]
+cyberdeck_path = NodePath("../..")

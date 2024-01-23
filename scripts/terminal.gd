@@ -3,18 +3,43 @@ extends PanelContainer
 @onready var console_prompt = $VBoxContainer/ConsolePrompt
 @onready var console_display = $VBoxContainer/ConsoleContainer/ConsoleText
 
+
 @export var message_buffer_limit = 100
 
 @export var application_screen_target: NodePath
 
 var message_buffer = []
 var command_modules: Array = []
-var application_screen
+var _application_screen
+
+var current_port: NetworkDevice = null
+var cyberdeck
 
 func _ready():
 	assert(application_screen_target)
-	var application_screen = get_node(application_screen_target)
-	print(application_screen)
+	var _application_screen = get_node(application_screen_target)
+	
+	cyberdeck = find_parent("Cyberdeck")
+
+	
+	cyberdeck.connect_to_port.connect(_on_connect_to_port)
+	cyberdeck.disconnect_from_port.connect(_on_disconnect_from_port)
+
+func _on_connect_to_port(port):
+	# may change this later if vpns or simiular gets added 🤷‍♂️
+	if current_port:
+		return
+	
+	current_port = port
+	
+	push_message("Succsessfully connected with address <%s>" % port.address)
+	
+	
+func _on_disconnect_from_port():
+	if current_port:
+		push_message("Disconnecting from address<%s>" % current_port.address)
+	current_port = null
+	
 
 func add_command_module(module: CommandModule):
 	module.console = self
@@ -61,3 +86,4 @@ func _on_console_prompt_text_submitted(input):
 		
 	parse_input(input)
 	console_display.scroll_to_line(console_display.get_line_count()-1)
+

@@ -1,0 +1,3 @@
+extends PhysicalDevice
+class_name PhysicalWallPort
+
