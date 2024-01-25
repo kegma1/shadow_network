@@ -32,6 +32,8 @@ var gravity = 9.8
 @onready var animation_player = $AnimationPlayer
 @onready var cyberdeck = $Rig/Camera3D/Cyberdeck
 
+
+
 var cyberdeck_focus = false : 
 	set(new_value):
 		if cyberdeck_focus == new_value:
@@ -42,10 +44,17 @@ var cyberdeck_focus = false :
 			cyberdeck_focus = false
 			cyberdeck.emit_signal("disconnect_from_port")
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			
+			$Rig/Camera3D/lookray.enabled = true
+			$TextureRect.show()
+			
 		else:
 			animation_player.play("switch_to_cyberdeck")
 			cyberdeck_focus = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			
+			$Rig/Camera3D/lookray.enabled = false
+			$TextureRect.hide()
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

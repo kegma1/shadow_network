@@ -30,7 +30,7 @@ func get_standard_gateway(address: String) -> String:
 
 func ping(dest_address: String, from_address: String):
 	if not is_same_subnet(dest_address, from_address):
-		return "Ping request could not find host <%s>" % dest_address
+		return "Ping request could not find host %s" % dest_address
 	
 	var standard_gateway = get_standard_gateway(from_address)
 	var subnet: NetworkDevice
@@ -39,17 +39,17 @@ func ping(dest_address: String, from_address: String):
 			subnet = net
 	
 	if not subnet:
-		return "Ping request could not find host <%s>" % dest_address
+		return "Ping request could not find host %s" % dest_address
 		
 	var device = subnet.find_device_by_address(dest_address)
 	if not device:
-		return "Ping request could not find host <%s>" % dest_address
+		return "Ping request could not find host %s" % dest_address
 	
-	return "Reply from <%s>: bytes=32 time=%sms TTL=60" % [dest_address, randi_range(1, 59)]
+	return "Reply from %s: bytes=32 time=%sms TTL=60" % [dest_address, randi_range(1, 59)]
 
 func traceroute(dest_address: String, from_address: String):
 	if not is_same_subnet(dest_address, from_address):
-		return "not same subnet <%s>" % dest_address
+		return "Failed to find host %s" % dest_address
 	
 	var standard_gateway = get_standard_gateway(from_address)
 	var subnet: NetworkDevice
@@ -58,29 +58,37 @@ func traceroute(dest_address: String, from_address: String):
 			subnet = net
 	
 	if not subnet:
-		return "subnet not exsist <%s>" % dest_address
+		return "Failed to find host %s" % dest_address
 		
 	var from = subnet.find_device_by_address(dest_address)
 	if not from:
-		return "device not exsist <%s>" % dest_address
+		return "Failed to find host %s" % dest_address
 	var to = subnet.find_device_by_address(from_address)
 	if not to:
-		return "device not exsist <%s>" % from_address
+		return "Failed to find host %s" % from_address
 		
 	var path_from_meet = find_path_to_meet(from, to)
 	var path_to_meet = find_path_to_meet(to, from)
 	path_to_meet.reverse()
 	path_from_meet.pop_back()
 	path_from_meet.append_array(path_to_meet)
-	var output = ["Tracing route to <%s>" % dest_address]
+	path_from_meet.reverse()
+	var output = [
+		"Tracing route to %s" % dest_address,
+		"Step\tAddress"
+		]
 	for i in range(path_from_meet.size()):
-		output.push_back("%s\t<%s>[%s]" % [int(i), path_from_meet[i].address, path_from_meet[i].name])
+		output.push_back("%0*d\t%s" % [4,i + 1, path_from_meet[i].address])
 	return output
 	
 			
 func find_path_to_meet(from, to):
-	var path = [from]
+	var path:Array[NetworkDevice] = [from]
+	if from == to:
+		return path
 	while true:
+		if "find_device_by_address" not in path[-1].get_parent():
+			return path
 		var parent = path[-1].get_parent()
 		var res = parent.find_device_by_address(to.address)
 		if not res:

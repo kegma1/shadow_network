@@ -8,6 +8,7 @@ extends Node3D
 
 signal connect_to_port(port: NetworkDevice)
 signal disconnect_from_port
+signal take_focus
 
 var mesh_size = Vector2()
 
@@ -22,6 +23,7 @@ var last_mouse_pos_2D = null
 func _set_display_on(new_state):
 	if new_state:
 		main_screen.show()
+		emit_signal("take_focus")
 	else:
 		main_screen.hide()
 		

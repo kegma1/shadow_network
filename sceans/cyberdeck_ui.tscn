@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://6dk2tjowock1"]
+[gd_scene load_steps=5 format=3 uid="uid://6dk2tjowock1"]
 
 [ext_resource type="Script" path="res://scripts/cyberdeck_ui.gd" id="1_osi6j"]
 [ext_resource type="Theme" uid="uid://j581ls8wdpfr" path="res://themes/terminal_theme.tres" id="1_p32at"]
 [ext_resource type="PackedScene" uid="uid://dgegary57sbpr" path="res://sceans/terminal.tscn" id="2_t4th5"]
+[ext_resource type="PackedScene" uid="uid://crsrw5dy0golh" path="res://sceans/app_launcher.tscn" id="4_qgol2"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -11,8 +12,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource("1_p32at")
 script = ExtResource("1_osi6j")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -26,14 +37,12 @@ grow_vertical = 2
 layout_mode = 2
 application_screen_target = NodePath("../AplicationScreen")
 
-[node name="AplicationScreen" type="Control" parent="VBoxContainer"]
+[node name="AplicationScreen" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="TabContainer" type="TabContainer" parent="VBoxContainer/AplicationScreen"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+
+[node name="AppLauncher" parent="VBoxContainer/AplicationScreen/TabContainer" instance=ExtResource("4_qgol2")]
+layout_mode = 2

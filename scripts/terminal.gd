@@ -24,6 +24,7 @@ func _ready():
 	
 	cyberdeck.connect_to_port.connect(_on_connect_to_port)
 	cyberdeck.disconnect_from_port.connect(_on_disconnect_from_port)
+	cyberdeck.take_focus.connect(func(): console_prompt.grab_focus())
 
 func _on_connect_to_port(port):
 	# may change this later if vpns or simiular gets added 🤷‍♂️

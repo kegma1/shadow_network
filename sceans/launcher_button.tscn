@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://1ch2oj35vynu"]
+
+[ext_resource type="Script" path="res://scripts/launcher_button.gd" id="1_gpk0t"]
+[ext_resource type="Theme" uid="uid://j581ls8wdpfr" path="res://themes/terminal_theme.tres" id="1_jjhw3"]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+offset_right = 209.0
+offset_bottom = 78.0
+theme = ExtResource("1_jjhw3")
+alignment = 1
+script = ExtResource("1_gpk0t")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "???"
