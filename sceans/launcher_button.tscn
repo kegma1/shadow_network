@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://1ch2oj35vynu"]
+[gd_scene load_steps=7 format=3 uid="uid://1ch2oj35vynu"]
 
 [ext_resource type="Script" path="res://scripts/launcher_button.gd" id="1_gpk0t"]
 [ext_resource type="Theme" uid="uid://j581ls8wdpfr" path="res://themes/terminal_theme.tres" id="1_jjhw3"]
+[ext_resource type="Texture2D" uid="uid://dpu7i8k8e3mps" path="res://textures/ui_tesxtures/icons/placeholder_icon_normal.png" id="3_ntcie"]
+[ext_resource type="Texture2D" uid="uid://d2vavvaldrjg3" path="res://textures/ui_tesxtures/icons/placeholder_icon_pressed.png" id="4_nd4x0"]
+[ext_resource type="Texture2D" uid="uid://rf4o8pbwllr3" path="res://textures/ui_tesxtures/icons/placeholder_icon_hover.png" id="5_axl2h"]
+[ext_resource type="Texture2D" uid="uid://b1o55dai2q7fq" path="res://textures/ui_tesxtures/icons/placeholder_icon_disabled.png" id="6_pqlty"]
 
 [node name="VBoxContainer" type="VBoxContainer"]
 offset_right = 209.0
@@ -9,11 +13,20 @@ offset_bottom = 78.0
 theme = ExtResource("1_jjhw3")
 alignment = 1
 script = ExtResource("1_gpk0t")
+normal_texture = ExtResource("3_ntcie")
+pressed_texture = ExtResource("4_nd4x0")
+hover_texture = ExtResource("5_axl2h")
+disabled_texture = ExtResource("6_pqlty")
 
 [node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
+disabled = true
+texture_normal = ExtResource("3_ntcie")
+texture_pressed = ExtResource("4_nd4x0")
+texture_hover = ExtResource("5_axl2h")
+texture_disabled = ExtResource("6_pqlty")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
