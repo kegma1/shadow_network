@@ -13,6 +13,7 @@ offset_bottom = 78.0
 theme = ExtResource("1_jjhw3")
 alignment = 1
 script = ExtResource("1_gpk0t")
+app_launcher_path = null
 normal_texture = ExtResource("3_ntcie")
 pressed_texture = ExtResource("4_nd4x0")
 hover_texture = ExtResource("5_axl2h")
@@ -33,3 +34,5 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
 text = "???"
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
