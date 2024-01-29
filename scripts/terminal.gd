@@ -33,6 +33,8 @@ func _on_connect_to_port(port):
 	
 	current_port = port
 	
+	DiscoverdNetwork.connected_to_subnet(port.address)
+	
 	push_message("Succsessfully connected with address <%s>" % port.address)
 	
 	
@@ -40,6 +42,7 @@ func _on_disconnect_from_port():
 	if current_port:
 		push_message("Disconnecting from address<%s>" % current_port.address)
 	current_port = null
+	DiscoverdNetwork.dissconnected_from_subnet()
 	
 
 func add_command_module(module: CommandModule):

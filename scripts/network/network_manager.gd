@@ -1,7 +1,5 @@
 extends Node
 
-var ip_to_node_map: Dictionary
-
 func is_same_subnet(ip1: String, ip2: String) -> bool:
 	# Split the IP addresses into octets
 	var octets1 := ip1.split(".")
@@ -44,6 +42,10 @@ func ping(dest_address: String, from_address: String):
 	var device = subnet.find_device_by_address(dest_address)
 	if not device:
 		return "Ping request could not find host %s" % dest_address
+	
+	var new_info = DiscoverdNetwork.InfoObject.new(dest_address)
+	
+	DiscoverdNetwork.discover_info([new_info])
 	
 	return "Reply from %s: bytes=32 time=%sms TTL=60" % [dest_address, randi_range(1, 59)]
 
