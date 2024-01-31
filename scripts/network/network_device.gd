@@ -24,6 +24,22 @@ func undiscover_info(info: InfoType):
 func is_info_discoverd(info: InfoType):
 	return discoverd_flags & info != 0
 
+func get_discoverd_info():
+	var discoverd_info = {}
+	
+	if is_info_discoverd(InfoType.Adress):
+		discoverd_info["address"] = address
+	if is_info_discoverd(InfoType.Hostname):
+		discoverd_info["hostname"] = name
+	if is_info_discoverd(InfoType.Type):
+		discoverd_info["type"] = type
+	if is_info_discoverd(InfoType.Parent):
+		if get_parent() is NetworkDevice:
+			discoverd_info["parent"] = get_parent()
+	
+	if discoverd_info == {}:
+		return null
+	return discoverd_info
 
 @onready var network_manager = find_parent("network_manager")
 
