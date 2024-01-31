@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-DiscoverdNetwork="*res://scripts/discoverd_network.gd"
+RefStore="*res://scripts/referance_store.gd"
 
 [display]
 

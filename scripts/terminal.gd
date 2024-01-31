@@ -1,4 +1,5 @@
 extends PanelContainer
+class_name Terminal
 
 @onready var console_prompt = $VBoxContainer/ConsolePrompt
 @onready var console_display = $VBoxContainer/ConsoleContainer/ConsoleText
@@ -25,7 +26,9 @@ func _ready():
 	cyberdeck.connect_to_port.connect(_on_connect_to_port)
 	cyberdeck.disconnect_from_port.connect(_on_disconnect_from_port)
 	cyberdeck.take_focus.connect(func(): console_prompt.grab_focus())
-
+	
+	RefStore.current_terminal = self
+	
 func _on_connect_to_port(port):
 	# may change this later if vpns or simiular gets added 🤷‍♂️
 	if current_port:
@@ -33,7 +36,6 @@ func _on_connect_to_port(port):
 	
 	current_port = port
 	
-	DiscoverdNetwork.connected_to_subnet(port.address)
 	
 	push_message("Succsessfully connected with address <%s>" % port.address)
 	
@@ -42,7 +44,6 @@ func _on_disconnect_from_port():
 	if current_port:
 		push_message("Disconnecting from address<%s>" % current_port.address)
 	current_port = null
-	DiscoverdNetwork.dissconnected_from_subnet()
 	
 
 func add_command_module(module: CommandModule):
