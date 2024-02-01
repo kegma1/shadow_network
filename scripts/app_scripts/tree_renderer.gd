@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var top_layer = $HBoxContainer
+@export var spaceing: int = 15
 
 var explorer_node: PackedScene = load("res://sceans/explorer_node.tscn")
 
@@ -54,6 +55,7 @@ func render(dev:NetworkDevice, parent_dictionary = {}):
 	var info = dev.get_discoverd_info()
 	
 	var new_node: Control = explorer_node.instantiate()
+	new_node.spaceing = spaceing
 	if info:
 		
 		if "hostname" in info: new_node.hostname = info["hostname"]
@@ -68,6 +70,7 @@ func render(dev:NetworkDevice, parent_dictionary = {}):
 		else:
 			top_layer.add_child(new_node)
 	parent_dictionary[dev] = new_node
+	$HBoxContainer.add_theme_constant_override("separation", new_node.width + spaceing)
 	
 	for child in dev.get_children():
 		render(child, parent_dictionary)

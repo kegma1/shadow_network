@@ -40,6 +40,7 @@ func on_command_traceroute(console, args):
 	var result = console.current_port.network_manager.traceroute(args[0], console.current_port.address)
 	if result is String:
 		console.push_message(result)
+		return
 	for line in result:
 		console.push_message(line)
 		
