@@ -57,20 +57,20 @@ func render(dev:NetworkDevice, parent_dictionary = {}):
 	var new_node: Control = explorer_node.instantiate()
 	new_node.spaceing = spaceing
 	if info:
-		
 		if "hostname" in info: new_node.hostname = info["hostname"]
 		if "address" in info: new_node.address = info["address"]
 		if "type" in info: new_node.type = info["type"]
 
-		if "parent" in info:
+		if "parent" in info and info["parent"] in parent_dictionary:
 			var parent_node = parent_dictionary[info["parent"]]
 			assert(parent_node, "idk, the parent should always exist")
 			
 			parent_node.append_node(new_node)
 		else:
 			top_layer.add_child(new_node)
-	parent_dictionary[dev] = new_node
+		parent_dictionary[dev] = new_node
 	$HBoxContainer.add_theme_constant_override("separation", new_node.width + spaceing)
 	
 	for child in dev.get_children():
 		render(child, parent_dictionary)
+	

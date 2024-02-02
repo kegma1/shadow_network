@@ -474,7 +474,7 @@
 "origin" "20 -28 4"
 "angle" "90"
 "host_address" "10.0.0.2"
-"devices" "10.0.0.3"
+"devices" "10.0.0.3,10.0.0.5"
 "hostname" "testSwitch1"
 "device_type" "switch"
 }
@@ -542,4 +542,12 @@
 "devices" "192.168.0.5"
 "hostname" "testSwitch2"
 "device_type" "switch"
+}
+// entity 15
+{
+"classname" "WallJackTEST"
+"origin" "-2 -40 4"
+"angle" "180"
+"device_type" "wall_port"
+"host_address" "10.0.0.5"
 }

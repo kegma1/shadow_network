@@ -62,6 +62,8 @@ func ping(dest_address: String, from_address: String):
 	var device = subnet.find_device_by_address(dest_address)
 	if not device:
 		return null
+	if device is AbstractWallPort and not device.connected_to:
+		return null
 	
 	device.discover_info(NetworkDevice.InfoType.Adress)
 	emit_signal("tree_updated")
@@ -80,10 +82,11 @@ func traceroute(dest_address: String, from_address: String):
 		
 	var from = subnet.find_device_by_address(dest_address)
 	if not from: return null
+	if from is AbstractWallPort and not from.connected_to:
+		return null
 	
 	var to = subnet.find_device_by_address(from_address)
 	if not to: return null
-		
 	var output = []
 	if dest_address == from_address:
 		output.push_back(from)
@@ -99,8 +102,9 @@ func traceroute(dest_address: String, from_address: String):
 	path_from_meet.reverse()
 
 	for i in range(path_from_meet.size()):
-		path_from_meet[i].discover_info(NetworkDevice.InfoType.Parent
-										|NetworkDevice.InfoType.Adress)
+		path_from_meet[i].discover_info(NetworkDevice.InfoType.Adress)
+		if path_from_meet[i].get_parent() in path_from_meet:
+			path_from_meet[i].discover_info(NetworkDevice.InfoType.Parent)
 		output.push_back(path_from_meet[i])
 	emit_signal("tree_updated")
 	return output

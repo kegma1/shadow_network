@@ -48,16 +48,26 @@ func find_device_by_address(address, devices):
 	return null
 
 func create_network_device(dev: PhysicalDevice) -> NetworkDevice:
-	var new_node = NetworkDevice.new()
+	var new_node: NetworkDevice
+	match dev.properties["device_type"]:
+		"wall_port":
+			new_node = AbstractWallPort.new()
+			new_node.type = "cyberdeck"
+			new_node.hostname = "HP3k"
+			new_node.name = "device_" + dev.properties["host_address"]
+		_:
+			new_node = NetworkDevice.new()
+			new_node.type = dev.properties["device_type"]
+			if "hostname" in dev.properties:
+				new_node.name = dev.properties["hostname"]
+				new_node.hostname = dev.properties["hostname"]
+			else:
+				new_node.name = "device_" + dev.properties["host_address"]
+		
 	new_node.address = dev.properties["host_address"]
-	new_node.type = dev.properties["device_type"]
 	
 	dev.abstract_device = new_node
 	new_node.physical_device = dev
-	
-	if "hostname" in dev.properties:
-		new_node.name = dev.properties["hostname"]
-	else:
-		new_node.name = "device_" + dev.properties["host_address"]
+
 	
 	return new_node

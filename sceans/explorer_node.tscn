@@ -10,6 +10,7 @@ bg_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
 border_color = Color(0.290196, 0.964706, 0.14902, 1)
 
 [sub_resource type="Gradient" id="Gradient_gffav"]
+interpolation_mode = 2
 colors = PackedColorArray(0.176471, 0.482353, 0.113725, 1, 0.290196, 0.964706, 0.14902, 1)
 
 [node name="Node2D" type="Control"]
@@ -53,7 +54,6 @@ axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect"]
-clip_contents = false
 layout_mode = 0
 offset_left = 7.0
 offset_top = 7.0
@@ -70,7 +70,7 @@ Type: ???"
 scroll_active = false
 
 [node name="Node2D" type="Node2D" parent="NinePatchRect"]
-position = Vector2(104, 43)
+position = Vector2(104, 79)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -88,5 +88,5 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Line2D" type="Line2D" parent="."]
 z_index = -1
-points = PackedVector2Array(0, 0)
+points = PackedVector2Array(0, -37)
 gradient = SubResource("Gradient_gffav")

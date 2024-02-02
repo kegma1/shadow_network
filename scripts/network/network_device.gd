@@ -2,6 +2,7 @@ extends Node
 class_name NetworkDevice
 
 @export var address: String
+@export var hostname: String
 @export var type: String
 
 @export var physical_device: PhysicalDevice
@@ -30,7 +31,7 @@ func get_discoverd_info():
 	if is_info_discoverd(InfoType.Adress):
 		discoverd_info["address"] = address
 	if is_info_discoverd(InfoType.Hostname):
-		discoverd_info["hostname"] = name
+		discoverd_info["hostname"] = hostname
 	if is_info_discoverd(InfoType.Type):
 		discoverd_info["type"] = type
 	if is_info_discoverd(InfoType.Parent):
