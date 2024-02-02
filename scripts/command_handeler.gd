@@ -23,6 +23,7 @@ func on_command_help(console, _args):
 	
 	console.push_message(msg)
 
+# "Reply from %s: bytes=32 time=%sms TTL=60" % [dest_address, randi_range(1, 59)]
 ### Network module
 func on_command_ping(console, args):
 	if not console.current_port:
@@ -30,7 +31,11 @@ func on_command_ping(console, args):
 		return
 	
 	var result = console.current_port.network_manager.ping(args[0], console.current_port.address)
-	console.push_message(result)
+	if result:
+		console.push_message("Reply from %s: bytes=32 time=%sms TTL=60" % [args[0], randi_range(1, 59)])
+		return
+		
+	console.push_message("Ping request could not find host %s" % args[0])
 	
 func on_command_traceroute(console, args):
 	if not console.current_port:
@@ -38,9 +43,16 @@ func on_command_traceroute(console, args):
 		return
 	
 	var result = console.current_port.network_manager.traceroute(args[0], console.current_port.address)
-	if result is String:
-		console.push_message(result)
-		return
-	for line in result:
-		console.push_message(line)
+	if result:
+		console.push_message("Tracing route to %s" % args[0])
+		console.push_message("Step\tAddress")
 		
+		for i in range(result.size()):
+			console.push_message("%0*d\t%s" % [4,i + 1, result[i].address])
+		return
+		
+	console.push_message("Failed to find host %s" % args[0])
+	
+	
+		
+

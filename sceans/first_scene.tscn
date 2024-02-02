@@ -516,24 +516,28 @@ script = ExtResource("12_dupa8")
 address = "10.0.0.1"
 type = "router"
 physical_device = NodePath("../../QodotMap/entity_8_HomeRouterTest")
+discoverd_flags = 15
 
 [node name="testSwitch1" type="Node" parent="network_manager/testnet1" node_paths=PackedStringArray("physical_device")]
 script = ExtResource("12_dupa8")
 address = "10.0.0.2"
 type = "switch"
 physical_device = NodePath("../../../QodotMap/entity_7_SwitchTEST")
+discoverd_flags = 15
 
 [node name="epic_gamer_server" type="Node" parent="network_manager/testnet1/testSwitch1" node_paths=PackedStringArray("physical_device")]
 script = ExtResource("12_dupa8")
 address = "10.0.0.3"
 type = "server"
 physical_device = NodePath("../../../../QodotMap/entity_6_HomeServerTEST")
+discoverd_flags = 15
 
 [node name="device_10_0_0_4" type="Node" parent="network_manager/testnet1" node_paths=PackedStringArray("physical_device")]
 script = ExtResource("12_dupa8")
 address = "10.0.0.4"
 type = "wall_port"
 physical_device = NodePath("../../../QodotMap/entity_9_WallJackTEST")
+discoverd_flags = 15
 
 [node name="testnet2" type="Node" parent="network_manager" node_paths=PackedStringArray("physical_device")]
 script = ExtResource("12_dupa8")
