@@ -7,30 +7,32 @@ class_name AbstractWallPort
 		if connected_to:
 			discover_info(InfoType.Adress|InfoType.Hostname|InfoType.Type)
 		else:
-			undiscover_info(InfoType.Adress|InfoType.Hostname|InfoType.Type)
+			if not is_info_discoverd(InfoType.Parent):
+				undiscover_info(InfoType.Adress)
+			undiscover_info(InfoType.Hostname|InfoType.Type)
 
 func discover_info(info: InfoType):
 	if connected_to:
 		discoverd_flags |= info
 
 func get_discoverd_info():
-	if connected_to:
-		var discoverd_info = {}
+	var discoverd_info = {}
 	
-		if is_info_discoverd(InfoType.Adress):
-			discoverd_info["address"] = address
+	if connected_to:
 		if is_info_discoverd(InfoType.Hostname):
 			discoverd_info["hostname"] = hostname
 		if is_info_discoverd(InfoType.Type):
 			discoverd_info["type"] = type
-		if is_info_discoverd(InfoType.Parent):
-			if get_parent() is NetworkDevice:
-				discoverd_info["parent"] = get_parent()
+			
+	if is_info_discoverd(InfoType.Adress):
+		discoverd_info["address"] = address
+	if is_info_discoverd(InfoType.Parent):
+		if get_parent() is NetworkDevice:
+			discoverd_info["parent"] = get_parent()
 	
-		if discoverd_info == {}:
-			return null
-		return discoverd_info
-	return null
+	if discoverd_info == {}:
+		return null
+	return discoverd_info
 
 func _ready():
 	var terminal = RefStore.current_terminal

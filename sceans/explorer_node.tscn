@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5cuv6v6faxkd"]
+[gd_scene load_steps=8 format=3 uid="uid://c5cuv6v6faxkd"]
 
 [ext_resource type="Script" path="res://scripts/app_scripts/explorer_node.gd" id="1_8qi41"]
-[ext_resource type="Texture2D" uid="uid://d1dv2h1iknvoe" path="res://textures/ui_tesxtures/terminal_panel.png" id="1_a2lx8"]
 [ext_resource type="Theme" uid="uid://j581ls8wdpfr" path="res://themes/terminal_theme.tres" id="1_ntrtt"]
+[ext_resource type="Texture2D" uid="uid://cpcy11f5qcep6" path="res://textures/ui_tesxtures/terminal_panel1.png" id="2_cnff1"]
+[ext_resource type="Texture2D" uid="uid://bg2xcjohyb7mi" path="res://textures/ui_tesxtures/terminal_panel2.png" id="4_4ktan"]
+[ext_resource type="Texture2D" uid="uid://c04s0k3a8aa8g" path="res://textures/ui_tesxtures/terminal_panel3.png" id="5_ecgty"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34s5a"]
 content_margin_left = 5.0
@@ -30,7 +32,7 @@ auto_translate = false
 localize_numeral_system = false
 script = ExtResource("1_8qi41")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="standard" type="NinePatchRect" parent="."]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -44,7 +46,7 @@ offset_right = 104.0
 offset_bottom = 43.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_a2lx8")
+texture = ExtResource("2_cnff1")
 region_rect = Rect2(0, 0, 64, 64)
 patch_margin_left = 11
 patch_margin_top = 11
@@ -53,13 +55,14 @@ patch_margin_bottom = 11
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect"]
+[node name="RichTextLabel" type="RichTextLabel" parent="standard"]
 layout_mode = 0
 offset_left = 7.0
 offset_top = 7.0
 offset_right = 201.0
 offset_bottom = 79.0
 theme = ExtResource("1_ntrtt")
+theme_override_colors/default_color = Color(0.290196, 0.964706, 0.14902, 1)
 theme_override_font_sizes/normal_font_size = 16
 theme_override_styles/focus = SubResource("StyleBoxFlat_34s5a")
 theme_override_styles/normal = SubResource("StyleBoxFlat_34s5a")
@@ -69,8 +72,87 @@ IP-Address: ???
 Type: ???"
 scroll_active = false
 
-[node name="Node2D" type="Node2D" parent="NinePatchRect"]
-position = Vector2(104, 79)
+[node name="disabled" type="NinePatchRect" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -43.0
+offset_right = 104.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_4ktan")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 11
+patch_margin_top = 11
+patch_margin_right = 11
+patch_margin_bottom = 11
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="disabled"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 201.0
+offset_bottom = 79.0
+theme = ExtResource("1_ntrtt")
+theme_override_colors/default_color = Color(0.207843, 0.615686, 0.121569, 1)
+theme_override_font_sizes/normal_font_size = 16
+theme_override_styles/focus = SubResource("StyleBoxFlat_34s5a")
+theme_override_styles/normal = SubResource("StyleBoxFlat_34s5a")
+bbcode_enabled = true
+text = "Hostname: ???
+IP-Address: ???
+Type: ???"
+scroll_active = false
+
+[node name="highligted" type="NinePatchRect" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -43.0
+offset_right = 104.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_ecgty")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 11
+patch_margin_top = 11
+patch_margin_right = 11
+patch_margin_bottom = 11
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="highligted"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 201.0
+offset_bottom = 79.0
+theme = ExtResource("1_ntrtt")
+theme_override_colors/default_color = Color(0.843137, 1, 0, 1)
+theme_override_font_sizes/normal_font_size = 16
+theme_override_styles/focus = SubResource("StyleBoxFlat_34s5a")
+theme_override_styles/normal = SubResource("StyleBoxFlat_34s5a")
+bbcode_enabled = true
+text = "Hostname: ???
+IP-Address: ???
+Type: ???"
+scroll_active = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -85,6 +167,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 222
 metadata/_edit_use_anchors_ = true
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(0, 36)
 
 [node name="Line2D" type="Line2D" parent="."]
 z_index = -1

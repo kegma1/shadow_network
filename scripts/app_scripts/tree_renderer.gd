@@ -56,6 +56,12 @@ func render(dev:NetworkDevice, parent_dictionary = {}):
 	
 	var new_node: Control = explorer_node.instantiate()
 	new_node.spaceing = spaceing
+	
+	if dev is AbstractWallPort and dev.connected_to:
+		new_node.state = new_node.State.highlighted
+	elif dev is AbstractWallPort and not dev.connected_to:
+		new_node.state = new_node.State.disabled
+	
 	if info:
 		if "hostname" in info: new_node.hostname = info["hostname"]
 		if "address" in info: new_node.address = info["address"]
