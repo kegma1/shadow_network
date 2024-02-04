@@ -67,16 +67,26 @@ func render(dev:NetworkDevice, parent_dictionary = {}):
 		if "address" in info: new_node.address = info["address"]
 		if "type" in info: new_node.type = info["type"]
 
-		if "parent" in info and info["parent"] in parent_dictionary:
+		if "parent" in info :#and info["parent"] in parent_dictionary:
+			if info["parent"] not in parent_dictionary:
+				parent_dictionary[info["parent"]] = explorer_node.instantiate()
+				parent_dictionary[info["parent"]].state = new_node.State.disabled
+				parent_dictionary[info["parent"]].spaceing = spaceing
+				top_layer.add_child(parent_dictionary[info["parent"]])
+				
 			var parent_node = parent_dictionary[info["parent"]]
 			assert(parent_node, "idk, the parent should always exist")
 			
 			parent_node.append_node(new_node)
 		else:
 			top_layer.add_child(new_node)
+			
 		parent_dictionary[dev] = new_node
-	$HBoxContainer.add_theme_constant_override("separation", new_node.width + spaceing)
+		
+	top_layer.add_theme_constant_override("separation", spaceing)
 	
 	for child in dev.get_children():
 		render(child, parent_dictionary)
+
 	
+

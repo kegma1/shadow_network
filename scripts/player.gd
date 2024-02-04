@@ -25,6 +25,7 @@ var gravity = 9.8
 
 @onready var head = $Rig
 @onready var camera = $Rig/Camera3D
+@onready var gun_camera = $Rig/Camera3D/SubViewportContainer/SubViewport/GunCam
 @onready var stairs_below = $StairsBelow
 
 @onready var collision_shape = $Shape
@@ -32,6 +33,12 @@ var gravity = 9.8
 @onready var animation_player = $AnimationPlayer
 @onready var cyberdeck = $Rig/Camera3D/Cyberdeck
 
+@onready var light_detection = $LightViewPort/LightDetection
+
+@onready var light_view_port = $LightViewPort
+@onready var debug_color_rect = $test_ui/ColorRect
+@onready var light_level = $ui/TextureProgressBar
+@onready var debug_texture_rect = $test_ui/TextureRect
 
 
 var cyberdeck_focus = false : 
@@ -46,7 +53,7 @@ var cyberdeck_focus = false :
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			
 			$Rig/Camera3D/lookray.enabled = true
-			$TextureRect.show()
+			$ui/TextureRect.show()
 			
 		else:
 			animation_player.play("switch_to_cyberdeck")
@@ -54,13 +61,13 @@ var cyberdeck_focus = false :
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			
 			$Rig/Camera3D/lookray.enabled = false
-			$TextureRect.hide()
+			$ui/TextureRect.hide()
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
-func _unhandled_input(event):
+func _input(event):
 	if event is InputEventMouseMotion and !cyberdeck_focus:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
@@ -68,6 +75,7 @@ func _unhandled_input(event):
 
 var _was_on_floor_last_frame = false
 var _snapped_to_stairs_last_frame = false
+
 func _snap_down_to_stairs_check():
 	var did_snap = false
 	if not is_on_floor() and velocity.y <= 0 and (_was_on_floor_last_frame or _snapped_to_stairs_last_frame) and stairs_below.is_colliding():
@@ -154,6 +162,21 @@ func _physics_process(delta):
 	_snap_down_to_stairs_check()
 
 
+func _process(delta):
+	gun_camera.global_transform = camera.global_transform
+	
+	light_detection.global_position = global_position
+	var texture = light_view_port.get_texture()
+	debug_texture_rect.texture = texture
+	var color = get_average_color(texture)
+	debug_color_rect.color = color
+	light_level.value = color.get_luminance()
+	light_level.tint_progress.a = color.get_luminance()
+
+func get_average_color(texture:ViewportTexture) -> Color:
+	var image = texture.get_image()
+	image.resize(1, 1, Image.INTERPOLATE_LANCZOS)
+	return image.get_pixel(0, 0)
 	
 func _headbob(time) -> Vector3:
 	var pos = Vector3.ZERO

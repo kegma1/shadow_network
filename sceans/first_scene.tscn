@@ -1,6 +1,7 @@
-[gd_scene load_steps=70 format=3 uid="uid://ds4uxaca8id02"]
+[gd_scene load_steps=68 format=3 uid="uid://ds4uxaca8id02"]
 
 [ext_resource type="Script" path="res://addons/qodot/src/nodes/qodot_map.gd" id="1_6fjoc"]
+[ext_resource type="Environment" uid="uid://b7tj4a2cth33c" path="res://envirements/test.tres" id="1_ql4ve"]
 [ext_resource type="Resource" uid="uid://c36hv0o6g0udo" path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" id="2_1yob4"]
 [ext_resource type="Script" path="res://addons/qodot/game_definitions/fgd/solid_classes/mover.gd" id="3_4c2qf"]
 [ext_resource type="Texture2D" uid="uid://i3or17yblfcu" path="res://textures/texture_01.png" id="3_nib4s"]
@@ -13,18 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://6t505krmqrd5" path="res://sceans/network/physical/wall_jack_TEST.tscn" id="9_6r5po"]
 [ext_resource type="Script" path="res://scripts/network/network_device.gd" id="12_dupa8"]
 [ext_resource type="Script" path="res://scripts/network/network_devices/wall_port.gd" id="13_vwsc2"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l84od"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_j3gvp"]
-sky_material = SubResource("ProceduralSkyMaterial_l84od")
-
-[sub_resource type="Environment" id="Environment_hseic"]
-background_mode = 2
-sky = SubResource("Sky_j3gvp")
-tonemap_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w4rh8"]
 
@@ -211,7 +200,39 @@ points = PackedVector3Array(-1, 1.5, -1, -1, -1.5, -1, 1, -1.5, -1, 1, 1.5, -1, 
 [node name="world" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_hseic")
+environment = ExtResource("1_ql4ve")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, -0.25, 0.433013, -2.18557e-08, 0.866025, 0.5, -0.5, -0.433013, 0.75, 4.23353, 5.84106, -19.7661)
+visible = false
+layers = 524291
+light_energy = 0.05
+shadow_enabled = true
+sky_mode = 1
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 6.07737, 7.9921, -2.45692)
+layers = 524291
+light_color = Color(1, 1, 0.607843, 1)
+light_energy = 50.0
+shadow_enabled = true
+spot_range = 9.25117
+spot_angle = 26.1114
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(-3.31147e-08, 0.652746, -0.757576, 2.85325e-08, 0.757576, 0.652746, 1, 5.32907e-15, -4.37114e-08, -5.39537, 5.95409, 5.69598)
+layers = 524291
+light_color = Color(1, 1, 0.607843, 1)
+light_energy = 50.0
+shadow_enabled = true
+spot_range = 9.25117
+spot_angle = 26.1114
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.11257, 3, 6.41132)
+layers = 524291
+light_energy = 5.0
+shadow_enabled = true
 
 [node name="QodotMap" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00115538, 0.00236607, 0.000871658)
@@ -403,7 +424,7 @@ properties = {
 "hostname": "epic_gamer_server",
 "origin": "8 -28 4"
 }
-abstract_device = NodePath("../../network_manager/testnet1/testSwitch1/epic_gamer_server")
+abstract_device = NodePath("../../network_manager/testnet1/testSwitch1/onyxcraft")
 
 [node name="entity_7_SwitchTEST" parent="QodotMap" node_paths=PackedStringArray("abstract_device") instance=ExtResource("7_g5nyw")]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -1.75, 0.25, 1.25)
@@ -518,9 +539,6 @@ abstract_device = NodePath("../../network_manager/testnet1/testSwitch1/device_10
 [node name="Player" parent="." instance=ExtResource("5_ksms5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28601, -4.81524)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.214957, 0.976624, 0, -0.976624, -0.214957, 0, 13.7664, 2.86686)
-
 [node name="network_manager" parent="." instance=ExtResource("8_eajk8")]
 
 [node name="testnet1" type="Node" parent="network_manager" node_paths=PackedStringArray("physical_device")]
@@ -537,12 +555,13 @@ hostname = "testSwitch1"
 type = "switch"
 physical_device = NodePath("../../../QodotMap/entity_7_SwitchTEST")
 
-[node name="epic_gamer_server" type="Node" parent="network_manager/testnet1/testSwitch1" node_paths=PackedStringArray("physical_device")]
+[node name="onyxcraft" type="Node" parent="network_manager/testnet1/testSwitch1" node_paths=PackedStringArray("physical_device")]
 script = ExtResource("12_dupa8")
 address = "10.0.0.3"
-hostname = "epic_gamer_server"
+hostname = "onyxcraft"
 type = "server"
 physical_device = NodePath("../../../../QodotMap/entity_6_HomeServerTEST")
+discoverd_flags = 15
 
 [node name="device_10_0_0_5" type="Node" parent="network_manager/testnet1/testSwitch1" node_paths=PackedStringArray("physical_device")]
 script = ExtResource("13_vwsc2")
@@ -550,6 +569,7 @@ address = "10.0.0.5"
 hostname = "HP3k"
 type = "cyberdeck"
 physical_device = NodePath("../../../../QodotMap/entity_15_WallJackTEST")
+discoverd_flags = 8
 
 [node name="device_10_0_0_4" type="Node" parent="network_manager/testnet1" node_paths=PackedStringArray("physical_device")]
 script = ExtResource("13_vwsc2")
@@ -557,6 +577,7 @@ address = "10.0.0.4"
 hostname = "HP3k"
 type = "cyberdeck"
 physical_device = NodePath("../../../QodotMap/entity_9_WallJackTEST")
+discoverd_flags = 8
 
 [node name="testnet2" type="Node" parent="network_manager" node_paths=PackedStringArray("physical_device")]
 script = ExtResource("12_dupa8")

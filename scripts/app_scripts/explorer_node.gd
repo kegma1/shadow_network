@@ -1,4 +1,5 @@
 extends Control
+class_name ExplorerNode
 
 @export var spaceing: int = 15
 
@@ -8,11 +9,11 @@ extends Control
 
 @onready var children = $HBoxContainer
 
-@onready var standard_panel = $standard
-@onready var disabled_panel = $disabled
-@onready var highlighted_panel = $highligted
+@onready var standard_panel = $Control/standard
+@onready var disabled_panel = $Control/disabled
+@onready var highlighted_panel = $Control/highligted
 
-@onready var line = $Line2D
+@onready var line = $Control/Line2D
 
 var current_panel: NinePatchRect
 
@@ -48,18 +49,18 @@ func _ready():
 	set_state()
 	
 	current_panel.get_child(0).text = "Hostname: %s\nIP-Address: %s\nType: %s" % [hostname, address, type]
-	children.position.y = height + spaceing
-	children.add_theme_constant_override("separation", width + spaceing)
+	#children.position.y = height + spaceing
+	add_theme_constant_override("separation", spaceing)
+	children.add_theme_constant_override("separation", spaceing)
 
 
 func _process(delta):
 	var child_nodes = children.get_children()
 	for cn in child_nodes:
-		if cn.line.get_point_count() < 2:
-			var pos = cn.line.to_local($Node2D.global_position)
+		if cn is ExplorerNode and cn.line.get_point_count() < 2:
+			var pos = cn.line.to_local($Control/Node2D.global_position)
 			cn.line.add_point(pos)
 
 func append_node(node):
 	children.add_child(node)
-
 

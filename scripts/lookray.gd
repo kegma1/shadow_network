@@ -1,6 +1,6 @@
 extends RayCast3D
 
-@onready var text_label = $"../../../TextureRect/Label"
+@onready var text_label = $"../../../ui/TextureRect/Label"
 @onready var player = $"../../.."
 
 func _process(delta):

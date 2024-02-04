@@ -15,37 +15,28 @@ border_color = Color(0.290196, 0.964706, 0.14902, 1)
 interpolation_mode = 2
 colors = PackedColorArray(0.176471, 0.482353, 0.113725, 1, 0.290196, 0.964706, 0.14902, 1)
 
-[node name="Node2D" type="Control"]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = -540.0
-offset_right = -960.0
-offset_bottom = -540.0
-grow_horizontal = 2
-grow_vertical = 2
-auto_translate = false
-localize_numeral_system = false
+[node name="ExplorerNode" type="VBoxContainer"]
+offset_right = 208.0
+offset_bottom = 90.0
+alignment = 1
 script = ExtResource("1_8qi41")
 
-[node name="standard" type="NinePatchRect" parent="."]
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(208, 86)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="standard" type="NinePatchRect" parent="Control"]
 texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -104.0
-offset_top = -43.0
-offset_right = 104.0
-offset_bottom = 43.0
+custom_minimum_size = Vector2(208, 86)
+layout_mode = 2
+offset_right = 208.0
+offset_bottom = 86.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource("2_cnff1")
 region_rect = Rect2(0, 0, 64, 64)
 patch_margin_left = 11
@@ -55,7 +46,7 @@ patch_margin_bottom = 11
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="standard"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/standard"]
 layout_mode = 0
 offset_left = 7.0
 offset_top = 7.0
@@ -72,11 +63,11 @@ IP-Address: ???
 Type: ???"
 scroll_active = false
 
-[node name="disabled" type="NinePatchRect" parent="."]
+[node name="disabled" type="NinePatchRect" parent="Control"]
 visible = false
 texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
+custom_minimum_size = Vector2(208, 86)
+layout_mode = 2
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -87,6 +78,8 @@ offset_right = 104.0
 offset_bottom = 43.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource("4_4ktan")
 region_rect = Rect2(0, 0, 64, 64)
 patch_margin_left = 11
@@ -96,7 +89,7 @@ patch_margin_bottom = 11
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="disabled"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/disabled"]
 layout_mode = 0
 offset_left = 7.0
 offset_top = 7.0
@@ -113,11 +106,11 @@ IP-Address: ???
 Type: ???"
 scroll_active = false
 
-[node name="highligted" type="NinePatchRect" parent="."]
+[node name="highligted" type="NinePatchRect" parent="Control"]
 visible = false
 texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
+custom_minimum_size = Vector2(208, 86)
+layout_mode = 2
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -128,6 +121,8 @@ offset_right = 104.0
 offset_bottom = 43.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource("5_ecgty")
 region_rect = Rect2(0, 0, 64, 64)
 patch_margin_left = 11
@@ -137,7 +132,7 @@ patch_margin_bottom = 11
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="highligted"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/highligted"]
 layout_mode = 0
 offset_left = 7.0
 offset_top = 7.0
@@ -154,24 +149,16 @@ IP-Address: ???
 Type: ???"
 scroll_active = false
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = 100.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 222
-metadata/_edit_use_anchors_ = true
+[node name="Node2D" type="Marker2D" parent="Control"]
+position = Vector2(104, 81)
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(0, 36)
-
-[node name="Line2D" type="Line2D" parent="."]
+[node name="Line2D" type="Line2D" parent="Control"]
 z_index = -1
-points = PackedVector2Array(0, -37)
+points = PackedVector2Array(104, 5)
 gradient = SubResource("Gradient_gffav")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 222

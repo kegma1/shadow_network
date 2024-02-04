@@ -23,6 +23,7 @@ script = ExtResource("1_f0u0q")
 
 [node name="MainScreenMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.397, 0.558, -0.69)
+layers = 3
 material_override = SubResource("StandardMaterial3D_238uy")
 mesh = SubResource("PlaneMesh_dvcj4")
 
