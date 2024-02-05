@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://df788lihsrota"]
+[gd_scene load_steps=15 format=3 uid="uid://df788lihsrota"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_l0fe4"]
 [ext_resource type="PackedScene" uid="uid://06uklmqv6rdm" path="res://sceans/cyberdeck.tscn" id="2_b7eus"]
@@ -133,11 +133,10 @@ _data = {
 }
 
 [sub_resource type="SphereMesh" id="SphereMesh_3bkdo"]
-lightmap_size_hint = Vector2i(11, 6)
-radius = 0.3
-height = 0.6
 radial_segments = 4
 rings = 1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_o4cyq"]
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_l0fe4")
@@ -280,6 +279,13 @@ cull_mask = 524288
 fov = 40.0
 far = 20.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="LightViewPort/LightDetection"]
+[node name="octahedron" type="MeshInstance3D" parent="LightViewPort/LightDetection"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+visible = false
 layers = 524288
 mesh = SubResource("SphereMesh_3bkdo")
+
+[node name="plane" type="MeshInstance3D" parent="LightViewPort/LightDetection"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -1, 0)
+layers = 524288
+mesh = SubResource("PlaneMesh_o4cyq")

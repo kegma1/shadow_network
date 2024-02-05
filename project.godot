@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Shadow Network"
-run/main_scene="res://sceans/first_scene.tscn"
+run/main_scene="res://sceans/main_menu/mian_menue.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
