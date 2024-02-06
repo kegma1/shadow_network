@@ -1,4 +1,5 @@
 extends Node2D
+class_name Renderer
 
 @onready var top_layer = $HBoxContainer
 @export var spaceing: int = 15
@@ -20,7 +21,8 @@ func _ready():
 		current_port = terminal.current_port
 		current_subnet = network_manager.get_subnet_device(current_port.address)
 		render(current_subnet)
-
+		
+		
 	cyberdeck.connect_to_port.connect(_on_connect_to_port)
 	cyberdeck.disconnect_from_port.connect(_on_disconnect_from_port)
 	network_manager.tree_updated.connect(_rerender)
@@ -32,7 +34,8 @@ func _rerender():
 		for c in top_layer.get_children():
 			c.queue_free()
 		render(current_subnet)
-	
+		
+		
 func _on_connect_to_port(port):
 	# may change this later if vpns or simiular gets added 🤷‍♂️
 	if current_port:
@@ -51,7 +54,7 @@ func _on_disconnect_from_port():
 		pass
 	current_port = null
 
-func render(dev:NetworkDevice, parent_dictionary = {}):
+func render(dev:NetworkDevice, parent_dictionary = {}):	
 	var info = dev.get_discoverd_info()
 	
 	var new_node: Control = explorer_node.instantiate()
@@ -80,7 +83,7 @@ func render(dev:NetworkDevice, parent_dictionary = {}):
 			parent_node.append_node(new_node)
 		else:
 			top_layer.add_child(new_node)
-			
+		
 		parent_dictionary[dev] = new_node
 		
 	top_layer.add_theme_constant_override("separation", spaceing)
@@ -88,5 +91,4 @@ func render(dev:NetworkDevice, parent_dictionary = {}):
 	for child in dev.get_children():
 		render(child, parent_dictionary)
 
-	
 

@@ -16,8 +16,17 @@ interpolation_mode = 2
 colors = PackedColorArray(0.176471, 0.482353, 0.113725, 1, 0.290196, 0.964706, 0.14902, 1)
 
 [node name="ExplorerNode" type="VBoxContainer"]
-offset_right = 208.0
-offset_bottom = 90.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -45.0
+offset_right = 104.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
 alignment = 1
 script = ExtResource("1_8qi41")
 
@@ -25,7 +34,7 @@ script = ExtResource("1_8qi41")
 custom_minimum_size = Vector2(208, 86)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 0
+size_flags_vertical = 4
 
 [node name="standard" type="NinePatchRect" parent="Control"]
 texture_filter = 1
@@ -154,11 +163,11 @@ position = Vector2(104, 81)
 
 [node name="Line2D" type="Line2D" parent="Control"]
 z_index = -1
-points = PackedVector2Array(104, 5)
+points = PackedVector2Array(104, 5, 104, 5)
 gradient = SubResource("Gradient_gffav")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 0
 theme_override_constants/separation = 222
+alignment = 1
