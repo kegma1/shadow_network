@@ -1,13 +1,26 @@
 @tool
-extends TextureRect
+extends TextureButton
 class_name Desktop_icon
 
-@export var normal: Texture
-@export var hover: Texture
-@export var clicked: Texture
+@export var normal: Texture2D
+@export var hover: Texture2D
+@export var clicked: Texture2D
+
+@export var lable_text: String = ""
+
+@onready var label = $Label
 
 func _ready():
-	texture = normal
+	texture_normal = normal
+	texture_hover = hover
+	texture_pressed = clicked
+	label.text = lable_text
+	
+func _draw():
+	texture_normal = normal
+	texture_hover = hover
+	texture_pressed = clicked
+	label.text = lable_text
 
-func click():
+func _pressed():
 	pass
