@@ -8,6 +8,8 @@ class_name Desktop_icon
 
 @export var lable_text: String = ""
 
+@export var app: PackedScene
+
 @onready var label = $Label
 
 func _ready():
@@ -23,4 +25,5 @@ func _draw():
 	label.text = lable_text
 
 func _pressed():
-	pass
+	if app:
+		get_parent().add_child(app.instantiate())

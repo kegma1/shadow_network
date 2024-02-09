@@ -1,19 +1,21 @@
-[gd_scene load_steps=15 format=3 uid="uid://dfa5ycfw2tqde"]
+[gd_scene load_steps=20 format=3 uid="uid://dfa5ycfw2tqde"]
 
 [ext_resource type="Texture2D" uid="uid://c8n2musty3kjt" path="res://textures/ui_tesxtures/main_menue_screen_4x.png" id="1_fmebk"]
 [ext_resource type="Theme" uid="uid://dj2yjcn8glfjb" path="res://themes/desktop_theme.tres" id="1_frvug"]
 [ext_resource type="Shader" path="res://shaders/scrolling_wallpaper.gdshader" id="2_4pxng"]
 [ext_resource type="Texture2D" uid="uid://b3x5h7wgi2lhi" path="res://textures/ui_tesxtures/desktop_panel1.png" id="2_oibi4"]
-[ext_resource type="Texture2D" uid="uid://ddpaghxtw617g" path="res://textures/ui_tesxtures/icons/kijetesantakalu.png" id="3_0q5q2"]
+[ext_resource type="Texture2D" uid="uid://0ig1lx6hy658" path="res://textures/ui_tesxtures/icons/kijetesantakalu2.png" id="5_nyn5r"]
 [ext_resource type="PackedScene" uid="uid://cf0eglon4tfhc" path="res://sceans/main_menu/desktop_icon.tscn" id="6_hkydi"]
+[ext_resource type="Script" path="res://scripts/main_menu/Wallpaper.gd" id="6_oi6kl"]
 [ext_resource type="Texture2D" uid="uid://bjudncns6nkh2" path="res://textures/ui_tesxtures/icons.png" id="7_0vo2q"]
+[ext_resource type="PackedScene" uid="uid://bcka062gvvoq0" path="res://sceans/main_menu/settings menu.tscn" id="8_hmvmt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7vu44"]
 shader = ExtResource("2_4pxng")
 shader_parameter/Direction = Vector2(1, -1)
 shader_parameter/Speed = 0.08
 shader_parameter/Rotation = 0.45
-shader_parameter/Color = Color(0.494118, 0.352941, 0.607843, 1)
+shader_parameter/Color = Color(0.72549, 0.231373, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h7v0n"]
 atlas = ExtResource("7_0vo2q")
@@ -29,15 +31,27 @@ region = Rect2(0, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ewoek"]
 atlas = ExtResource("7_0vo2q")
-region = Rect2(32, 32, 32, 32)
+region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y060m"]
 atlas = ExtResource("7_0vo2q")
-region = Rect2(32, 96, 32, 32)
+region = Rect2(64, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q5xlt"]
 atlas = ExtResource("7_0vo2q")
-region = Rect2(32, 64, 32, 32)
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awvy0"]
+atlas = ExtResource("7_0vo2q")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xghd5"]
+atlas = ExtResource("7_0vo2q")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjq41"]
+atlas = ExtResource("7_0vo2q")
+region = Rect2(96, 64, 32, 32)
 
 [node name="MianMenue" type="Control"]
 layout_mode = 3
@@ -149,8 +163,9 @@ text = "  18:58
 material = SubResource("ShaderMaterial_7vu44")
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("3_0q5q2")
+texture = ExtResource("5_nyn5r")
 stretch_mode = 1
+script = ExtResource("6_oi6kl")
 
 [node name="MailIcon" parent="AspectRatioContainer/MarginContainer/MarginContainer2/desktop/VBoxContainer/Wallpaper" instance=ExtResource("6_hkydi")]
 layout_mode = 1
@@ -186,4 +201,23 @@ texture_hover = SubResource("AtlasTexture_q5xlt")
 normal = SubResource("AtlasTexture_ewoek")
 hover = SubResource("AtlasTexture_q5xlt")
 clicked = SubResource("AtlasTexture_y060m")
-lable_text = "ThiefNet"
+lable_text = "ThiefWeb"
+
+[node name="SettingsIcon" parent="AspectRatioContainer/MarginContainer/MarginContainer2/desktop/VBoxContainer/Wallpaper" instance=ExtResource("6_hkydi")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 44.0
+offset_top = -164.0
+offset_right = 76.0
+offset_bottom = -132.0
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_awvy0")
+texture_pressed = SubResource("AtlasTexture_xghd5")
+texture_hover = SubResource("AtlasTexture_wjq41")
+normal = SubResource("AtlasTexture_awvy0")
+hover = SubResource("AtlasTexture_wjq41")
+clicked = SubResource("AtlasTexture_xghd5")
+lable_text = "Settings"
+app = ExtResource("8_hmvmt")

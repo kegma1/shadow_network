@@ -1,0 +1,122 @@
+[gd_scene load_steps=13 format=3 uid="uid://dt0vgpf1kaeaa"]
+
+[ext_resource type="Script" path="res://scripts/main_menu/base_window.gd" id="1_ijwms"]
+[ext_resource type="Texture2D" uid="uid://bjudncns6nkh2" path="res://textures/ui_tesxtures/icons.png" id="1_x1f8g"]
+[ext_resource type="Shader" path="res://shaders/scrolling_wallpaper.gdshader" id="2_lfr3l"]
+[ext_resource type="Texture2D" uid="uid://0ig1lx6hy658" path="res://textures/ui_tesxtures/icons/kijetesantakalu2.png" id="4_dfqkv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ene2"]
+atlas = ExtResource("1_x1f8g")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruauo"]
+atlas = ExtResource("1_x1f8g")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dfj4e"]
+shader = ExtResource("2_lfr3l")
+shader_parameter/Direction = Vector2(1, -1)
+shader_parameter/Speed = 0.08
+shader_parameter/Rotation = 0.0
+shader_parameter/Color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_crw85"]
+shader = ExtResource("2_lfr3l")
+shader_parameter/Direction = Vector2(1, -1)
+shader_parameter/Speed = 0.08
+shader_parameter/Rotation = 0.45
+shader_parameter/Color = Color(0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gjr1"]
+atlas = ExtResource("1_x1f8g")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixfqt"]
+atlas = ExtResource("1_x1f8g")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6f1ux"]
+atlas = ExtResource("1_x1f8g")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbxwv"]
+atlas = ExtResource("1_x1f8g")
+region = Rect2(64, 128, 64, 64)
+
+[node name="BaseWindow" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+script = ExtResource("1_ijwms")
+
+[node name="Container" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="TopBar" type="NinePatchRect" parent="Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_2ene2")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="MarginContainer" type="MarginContainer" parent="Container"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="TopBar" type="NinePatchRect" parent="Container/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_ruauo")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="Container/MarginContainer/HBoxContainer/TopBar"]
+material = SubResource("ShaderMaterial_dfj4e")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="ColorRect" type="TextureRect" parent="Container/MarginContainer/HBoxContainer/TopBar/MarginContainer"]
+material = SubResource("ShaderMaterial_crw85")
+layout_mode = 2
+texture = ExtResource("4_dfqkv")
+expand_mode = 2
+stretch_mode = 1
+
+[node name="MinimiseButton" type="TextureButton" parent="Container/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_6gjr1")
+texture_pressed = SubResource("AtlasTexture_ixfqt")
+
+[node name="CloseButton" type="TextureButton" parent="Container/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_6f1ux")
+texture_pressed = SubResource("AtlasTexture_fbxwv")
+
+[connection signal="pressed" from="Container/MarginContainer/HBoxContainer/MinimiseButton" to="." method="_on_minimise_button_pressed"]
+[connection signal="pressed" from="Container/MarginContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
