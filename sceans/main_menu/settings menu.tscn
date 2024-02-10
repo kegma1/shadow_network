@@ -123,7 +123,7 @@ layout_mode = 2
 theme_override_constants/v_separation = 16
 columns = 2
 
-[node name="Label" type="Label" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/CustomizationSection/GridContainer"]
+[node name="OSColor" type="Label" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/CustomizationSection/GridContainer"]
 layout_mode = 2
 text = "OS color: "
 
@@ -222,6 +222,13 @@ theme_override_constants/margin_bottom = 11
 layout_mode = 2
 mouse_filter = 2
 
+[node name="Wallpaper" type="Label" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/CustomizationSection/GridContainer"]
+layout_mode = 2
+text = "Wallpaper: "
+
+[node name="WallpaperSelection" type="OptionButton" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/CustomizationSection/GridContainer"]
+layout_mode = 2
+
 [node name="RightPanel" type="NinePatchRect" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -234,3 +241,4 @@ patch_margin_bottom = 6
 
 [connection signal="item_selected" from="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/VideoSection/GridContainer/OptionButton" to="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/VideoSection" method="_on_option_button_item_selected"]
 [connection signal="toggled" from="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/VideoSection/GridContainer/CheckBox" to="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/VideoSection" method="_on_check_box_toggled"]
+[connection signal="item_selected" from="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/CustomizationSection/GridContainer/WallpaperSelection" to="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/CustomizationSection" method="_on_wallpaper_selection_item_selected"]

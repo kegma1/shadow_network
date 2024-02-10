@@ -1,6 +1,6 @@
 @tool
 extends TextureButton
-class_name Desktop_icon
+class_name DesktopIcon
 
 @export var normal: Texture2D
 @export var hover: Texture2D
@@ -8,7 +8,7 @@ class_name Desktop_icon
 
 @export var lable_text: String = ""
 
-@export var app: PackedScene
+@export var function: IconFunction
 
 @onready var label = $Label
 
@@ -25,5 +25,5 @@ func _draw():
 	label.text = lable_text
 
 func _pressed():
-	if app:
-		get_parent().add_child(app.instantiate())
+	function.do(self)
+

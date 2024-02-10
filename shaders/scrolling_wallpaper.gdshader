@@ -9,6 +9,6 @@ void fragment() {
 	mat2 rotation_matrix = mat2(vec2(cos(Rotation), -sin(Rotation)), vec2(sin(Rotation), cos(Rotation)));
 	vec2 rotated_uv = rotation_matrix * (UV - vec2(0.5)) + vec2(0.5);
 	vec4 grayscale_color = texture(TEXTURE, rotated_uv + (Direction * TIME * Speed));
-	COLOR = grayscale_color * Color;
+	COLOR = vec4(grayscale_color.rgb * (Color.rgb + (1.0 - grayscale_color.a)), 1.0);
 }
 

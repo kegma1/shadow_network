@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dt0vgpf1kaeaa"]
+[gd_scene load_steps=14 format=3 uid="uid://dt0vgpf1kaeaa"]
 
 [ext_resource type="Script" path="res://scripts/main_menu/base_window.gd" id="1_ijwms"]
 [ext_resource type="Texture2D" uid="uid://bjudncns6nkh2" path="res://textures/ui_tesxtures/icons.png" id="1_x1f8g"]
 [ext_resource type="Shader" path="res://shaders/scrolling_wallpaper.gdshader" id="2_lfr3l"]
 [ext_resource type="Texture2D" uid="uid://0ig1lx6hy658" path="res://textures/ui_tesxtures/icons/kijetesantakalu2.png" id="4_dfqkv"]
+[ext_resource type="Script" path="res://scripts/main_menu/scroll_background.gd" id="5_406iy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ene2"]
 atlas = ExtResource("1_x1f8g")
@@ -107,6 +108,7 @@ layout_mode = 2
 texture = ExtResource("4_dfqkv")
 expand_mode = 2
 stretch_mode = 1
+script = ExtResource("5_406iy")
 
 [node name="MinimiseButton" type="TextureButton" parent="Container/MarginContainer/HBoxContainer"]
 layout_mode = 2
