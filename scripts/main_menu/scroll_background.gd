@@ -1,8 +1,9 @@
 extends TextureRect
 
 @export var textures: Array[Texture] = [ 
+	preload("res://textures/ui_tesxtures/icons/kijetesantakalu4.png"),
+	preload("res://textures/ui_tesxtures/icons/kijetesantakalu3.png"),
 	preload("res://textures/ui_tesxtures/icons/kijetesantakalu2.png"),
-	preload("res://textures/ui_tesxtures/icons/kijetesantakalu3.png")
 ]
 
 @export var selected: int = Settings.selected_wallpaper

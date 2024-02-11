@@ -13,8 +13,9 @@ func _ready():
 		b.pressed.connect(_color_select_pressed)
 
 func add_items():
+	wallpaper_selection.add_item("ZigZag")
+	wallpaper_selection.add_item("Squares")
 	wallpaper_selection.add_item("Kijetesantakalu")
-	wallpaper_selection.add_item("Bubbles")
 
 func _color_select_pressed():
 	Settings.wallpaper_color = color_select_group.get_pressed_button().color

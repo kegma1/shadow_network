@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnql4c6nvwx8h"]
+
+[ext_resource type="Texture2D" uid="uid://bjudncns6nkh2" path="res://textures/ui_tesxtures/icons.png" id="1_3drbs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_loumg"]
+atlas = ExtResource("1_3drbs")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jj7e7"]
+texture = SubResource("AtlasTexture_loumg")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c31s8"]
+atlas = ExtResource("1_3drbs")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3a0oi"]
+texture = SubResource("AtlasTexture_c31s8")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[node name="Button" type="Button"]
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_jj7e7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jj7e7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3a0oi")
+text = "ghdjskaghjdksghja"
+alignment = 0

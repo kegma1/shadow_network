@@ -111,6 +111,7 @@ stretch_mode = 1
 script = ExtResource("5_406iy")
 
 [node name="MinimiseButton" type="TextureButton" parent="Container/MarginContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_6gjr1")
 texture_pressed = SubResource("AtlasTexture_ixfqt")

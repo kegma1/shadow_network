@@ -1,0 +1,129 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdi5s4syc3a5q"]
+
+[ext_resource type="PackedScene" uid="uid://dt0vgpf1kaeaa" path="res://sceans/main_menu/base_window.tscn" id="1_vo5hr"]
+[ext_resource type="Theme" uid="uid://dj2yjcn8glfjb" path="res://themes/desktop_theme.tres" id="1_yjmjg"]
+[ext_resource type="Texture2D" uid="uid://bjudncns6nkh2" path="res://textures/ui_tesxtures/icons.png" id="2_f11ns"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_immv3"]
+atlas = ExtResource("2_f11ns")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ejfq"]
+atlas = ExtResource("2_f11ns")
+region = Rect2(192, 0, 64, 64)
+
+[node name="MailClient" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yjmjg")
+
+[node name="BaseWindow" parent="." instance=ExtResource("1_vo5hr")]
+layout_mode = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="BaseWindow"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_immv3")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="BaseWindow/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BaseWindow/NinePatchRect/MarginContainer"]
+layout_mode = 2
+
+[node name="MailList" type="NinePatchRect" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+texture = SubResource("AtlasTexture_immv3")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailList"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailList/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailList/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MailDisplay" type="NinePatchRect" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_immv3")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="NinePatchRect" type="NinePatchRect" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay/MarginContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_1ejfq")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay/MarginContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.00045, 1.00054)
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="ColorRect" type="ColorRect" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay/MarginContainer/NinePatchRect/MarginContainer"]
+layout_mode = 2
+color = Color(0.403922, 0.403922, 0.403922, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay/MarginContainer/NinePatchRect/MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
