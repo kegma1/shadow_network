@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Character" load_steps=4 format=3 uid="uid://qmxtt14643nu"]
+
+[ext_resource type="Texture2D" uid="uid://bjudncns6nkh2" path="res://textures/ui_tesxtures/icons.png" id="1_mra0k"]
+[ext_resource type="Script" path="res://scripts/resources/character.gd" id="1_xeop7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7q8jj"]
+atlas = ExtResource("1_mra0k")
+region = Rect2(32, 32, 32, 32)
+
+[resource]
+script = ExtResource("1_xeop7")
+name = "Mordius e-pikkus"
+Photo = SubResource("AtlasTexture_7q8jj")

@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnql4c6nvwx8h"]
+[gd_scene load_steps=8 format=3 uid="uid://cnql4c6nvwx8h"]
 
 [ext_resource type="Texture2D" uid="uid://bjudncns6nkh2" path="res://textures/ui_tesxtures/icons.png" id="1_3drbs"]
+[ext_resource type="Script" path="res://scripts/main_menu/mail_button.gd" id="2_k5olm"]
+[ext_resource type="ButtonGroup" uid="uid://ctmyauxc6kitw" path="res://recources/button_groups/mail_list_button.tres" id="2_lku6l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_loumg"]
 atlas = ExtResource("1_3drbs")
@@ -26,9 +28,13 @@ texture_margin_right = 6.0
 texture_margin_bottom = 6.0
 
 [node name="Button" type="Button"]
+offset_right = 12.0
+offset_bottom = 12.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxTexture_jj7e7")
 theme_override_styles/hover = SubResource("StyleBoxTexture_jj7e7")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_3a0oi")
-text = "ghdjskaghjdksghja"
+toggle_mode = true
+button_group = ExtResource("2_lku6l")
 alignment = 0
+script = ExtResource("2_k5olm")

@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdi5s4syc3a5q"]
+[gd_scene load_steps=9 format=3 uid="uid://bdi5s4syc3a5q"]
 
 [ext_resource type="PackedScene" uid="uid://dt0vgpf1kaeaa" path="res://sceans/main_menu/base_window.tscn" id="1_vo5hr"]
 [ext_resource type="Theme" uid="uid://dj2yjcn8glfjb" path="res://themes/desktop_theme.tres" id="1_yjmjg"]
 [ext_resource type="Texture2D" uid="uid://bjudncns6nkh2" path="res://textures/ui_tesxtures/icons.png" id="2_f11ns"]
+[ext_resource type="Script" path="res://scripts/main_menu/mail_list.gd" id="4_c1xp7"]
+[ext_resource type="Script" path="res://scripts/main_menu/mail_display.gd" id="5_g0ony"]
+[ext_resource type="ButtonGroup" uid="uid://ctmyauxc6kitw" path="res://recources/button_groups/mail_list_button.tres" id="6_vvwes"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_immv3"]
 atlas = ExtResource("2_f11ns")
@@ -56,6 +59,7 @@ patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
+script = ExtResource("4_c1xp7")
 
 [node name="MarginContainer" type="MarginContainer" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailList"]
 layout_mode = 1
@@ -86,6 +90,8 @@ patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
+script = ExtResource("5_g0ony")
+mail_buttons = ExtResource("6_vvwes")
 
 [node name="MarginContainer" type="MarginContainer" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay"]
 layout_mode = 1
@@ -127,3 +133,5 @@ color = Color(0.403922, 0.403922, 0.403922, 1)
 [node name="RichTextLabel" type="RichTextLabel" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay/MarginContainer/NinePatchRect/MarginContainer"]
 layout_mode = 2
 bbcode_enabled = true
+
+[connection signal="list_updated" from="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailList" to="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay" method="_on_mail_list_list_updated"]

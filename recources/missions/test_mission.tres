@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Mission" load_steps=4 format=3 uid="uid://dmx31h4luip0o"]
+
+[ext_resource type="Script" path="res://scripts/resources/mission.gd" id="1_c7obv"]
+[ext_resource type="Resource" uid="uid://dqwkhn1hk4gax" path="res://levels/levels/test1.tres" id="1_i1fun"]
+[ext_resource type="Resource" uid="uid://qmxtt14643nu" path="res://recources/characters/test_character.tres" id="2_4mrg6"]
+
+[resource]
+script = ExtResource("1_c7obv")
+type = 3
+status = 0
+level = ExtResource("1_i1fun")
+next_mission = Array[ExtResource("1_c7obv")]([])
+title = "Test level 1"
+mission_text = "[wave amp=50.0 freq=5.0 connected=1]Mission for today is to make this bullshit work.[/wave]"
+sender = ExtResource("2_4mrg6")

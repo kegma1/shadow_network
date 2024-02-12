@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 RefStore="*res://scripts/referance_store.gd"
 Settings="*res://scripts/settings.gd"
+MissionManager="*res://scripts/mission_manager.gd"
 
 [display]
 

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Level" load_steps=4 format=3 uid="uid://dqwkhn1hk4gax"]
+
+[ext_resource type="PackedScene" uid="uid://ds4uxaca8id02" path="res://levels/level_scenes/test_levels/test_level_1.tscn" id="1_b0ced"]
+[ext_resource type="Script" path="res://scripts/resources/level.gd" id="1_oeahq"]
+[ext_resource type="Texture2D" uid="uid://djpbg4bx6hpoo" path="res://textures/ui_tesxtures/level_icons/test_level1_icon.png" id="1_ugi3m"]
+
+[resource]
+script = ExtResource("1_oeahq")
+map = ExtResource("1_b0ced")
+icon = ExtResource("1_ugi3m")

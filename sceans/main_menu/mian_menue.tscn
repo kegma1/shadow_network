@@ -1,10 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://dfa5ycfw2tqde"]
+[gd_scene load_steps=32 format=3 uid="uid://dfa5ycfw2tqde"]
 
 [ext_resource type="Texture2D" uid="uid://c8n2musty3kjt" path="res://textures/ui_tesxtures/main_menue_screen_4x.png" id="1_fmebk"]
 [ext_resource type="Theme" uid="uid://dj2yjcn8glfjb" path="res://themes/desktop_theme.tres" id="1_frvug"]
 [ext_resource type="Shader" path="res://shaders/scrolling_wallpaper.gdshader" id="2_4pxng"]
 [ext_resource type="Texture2D" uid="uid://b3x5h7wgi2lhi" path="res://textures/ui_tesxtures/desktop_panel1.png" id="2_oibi4"]
-[ext_resource type="Script" path="res://sceans/main_menu/taskbar_clock.gd" id="4_ovyps"]
+[ext_resource type="Script" path="res://scripts/main_menu/taskbar_clock.gd" id="4_ovyps"]
 [ext_resource type="Texture2D" uid="uid://me7w307vussh" path="res://textures/ui_tesxtures/icons/kijetesantakalu4.png" id="6_gaxfr"]
 [ext_resource type="PackedScene" uid="uid://cf0eglon4tfhc" path="res://sceans/main_menu/desktop_icon.tscn" id="6_hkydi"]
 [ext_resource type="Script" path="res://scripts/main_menu/scroll_background.gd" id="6_oi6kl"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" path="res://scripts/resources/app_launcher.gd" id="10_fp6wj"]
 [ext_resource type="PackedScene" uid="uid://bdi5s4syc3a5q" path="res://sceans/main_menu/mail_client.tscn" id="10_q06yf"]
 [ext_resource type="Script" path="res://scripts/resources/exit_icon.gd" id="11_pucrt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vmaib"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7vu44"]
 shader = ExtResource("2_4pxng")
@@ -118,13 +120,14 @@ patch_margin_bottom = 60
 
 [node name="MarginContainer2" type="MarginContainer" parent="AspectRatioContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 40
+theme_override_constants/margin_left = 36
 theme_override_constants/margin_top = 40
-theme_override_constants/margin_right = 40
+theme_override_constants/margin_right = 35
 theme_override_constants/margin_bottom = 60
 
 [node name="desktop" type="Panel" parent="AspectRatioContainer/MarginContainer/MarginContainer2"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vmaib")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer/MarginContainer/MarginContainer2/desktop"]
 layout_mode = 1
@@ -133,6 +136,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 0
 
 [node name="Panel" type="NinePatchRect" parent="AspectRatioContainer/MarginContainer/MarginContainer2/desktop/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
