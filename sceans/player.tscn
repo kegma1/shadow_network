@@ -155,7 +155,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 cull_mask = 524285
 
 [node name="Cyberdeck" parent="Rig/Camera3D" instance=ExtResource("2_b7eus")]
-transform = Transform3D(0.0346594, 0.00485251, 0.000424539, 0, 0.00305045, -0.0348668, -0.00487105, 0.0345275, 0.00302076, -0.258, -0.164, -0.43)
+transform = Transform3D(0.0346594, 0.00485251, 0.000424539, 0, 0.00305044, -0.0348668, -0.00487105, 0.0345275, 0.00302076, -0.258, -0.164, -0.43)
 
 [node name="lookray" type="RayCast3D" parent="Rig/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
@@ -167,6 +167,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="SubViewport" type="SubViewport" parent="Rig/Camera3D/SubViewportContainer"]
 transparent_bg = true
@@ -190,21 +192,23 @@ libraries = {
 
 [node name="ui" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_left = 955.5
-offset_top = 535.5
-offset_right = 995.5
-offset_bottom = 575.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="ui"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -79.5
-offset_top = -525.5
-offset_right = 48.5
-offset_bottom = -461.5
+offset_left = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
 grow_horizontal = 2
 max_value = 1.0
 step = 0.0

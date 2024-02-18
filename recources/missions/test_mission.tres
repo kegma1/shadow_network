@@ -11,5 +11,9 @@ status = 0
 level = ExtResource("1_i1fun")
 next_mission = Array[ExtResource("1_c7obv")]([])
 title = "Test level 1"
-mission_text = "[wave amp=50.0 freq=5.0 connected=1]Mission for today is to make this bullshit work.[/wave]"
+mission_text = "[wave amp=50.0 freq=5.0 connected=1]Mission for today is to make this bullshit work.[/wave]
+
+[wave amp=50.0 freq=5.0 connected=1]
+	[url=\"mission\"] >> CLICK HERE TO START MISSION [/url]
+[/wave]"
 sender = ExtResource("2_4mrg6")

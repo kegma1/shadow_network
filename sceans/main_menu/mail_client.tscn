@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdi5s4syc3a5q"]
+[gd_scene load_steps=12 format=3 uid="uid://bdi5s4syc3a5q"]
 
 [ext_resource type="PackedScene" uid="uid://dt0vgpf1kaeaa" path="res://sceans/main_menu/base_window.tscn" id="1_vo5hr"]
 [ext_resource type="Theme" uid="uid://dj2yjcn8glfjb" path="res://themes/desktop_theme.tres" id="1_yjmjg"]
@@ -10,6 +10,18 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_immv3"]
 atlas = ExtResource("2_f11ns")
 region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8b2u"]
+atlas = ExtResource("2_f11ns")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gl5o0"]
+atlas = ExtResource("2_f11ns")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov1wb"]
+atlas = ExtResource("2_f11ns")
+region = Rect2(160, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ejfq"]
 atlas = ExtResource("2_f11ns")
@@ -105,15 +117,99 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="NinePatchRect" type="NinePatchRect" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay/MarginContainer"]
 layout_mode = 2
+
+[node name="Header" type="NinePatchRect" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+texture = SubResource("AtlasTexture_e8b2u")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay/MarginContainer/VBoxContainer/Header"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="Control" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay/MarginContainer/VBoxContainer/Header/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay/MarginContainer/VBoxContainer/Header/MarginContainer/HBoxContainer"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -44.0
+offset_right = 95.0
+offset_bottom = 44.0
+grow_vertical = 2
+
+[node name="FromLabel" type="Label" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay/MarginContainer/VBoxContainer/Header/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ToLabel" type="Label" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay/MarginContainer/VBoxContainer/Header/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "
+"
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay/MarginContainer/VBoxContainer/Header/MarginContainer/HBoxContainer"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = -44.0
+offset_bottom = 44.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay/MarginContainer/VBoxContainer/Header/MarginContainer/HBoxContainer/AspectRatioContainer"]
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+texture = SubResource("AtlasTexture_gl5o0")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay/MarginContainer/VBoxContainer/Header/MarginContainer/HBoxContainer/AspectRatioContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="TextureRect" type="TextureRect" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay/MarginContainer/VBoxContainer/Header/MarginContainer/HBoxContainer/AspectRatioContainer/NinePatchRect/MarginContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_ov1wb")
+
+[node name="TextDisplay" type="NinePatchRect" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 texture = SubResource("AtlasTexture_1ejfq")
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="MarginContainer" type="MarginContainer" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay/MarginContainer/NinePatchRect"]
+[node name="MarginContainer" type="MarginContainer" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay/MarginContainer/VBoxContainer/TextDisplay"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -126,12 +222,13 @@ theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="ColorRect" type="ColorRect" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay/MarginContainer/NinePatchRect/MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay/MarginContainer/VBoxContainer/TextDisplay/MarginContainer"]
 layout_mode = 2
 color = Color(0.403922, 0.403922, 0.403922, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay/MarginContainer/NinePatchRect/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay/MarginContainer/VBoxContainer/TextDisplay/MarginContainer"]
 layout_mode = 2
 bbcode_enabled = true
 
 [connection signal="list_updated" from="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailList" to="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay" method="_on_mail_list_list_updated"]
+[connection signal="meta_clicked" from="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay/MarginContainer/VBoxContainer/TextDisplay/MarginContainer/RichTextLabel" to="BaseWindow/NinePatchRect/MarginContainer/HBoxContainer/MailDisplay" method="_on_rich_text_label_meta_clicked"]

@@ -85,7 +85,7 @@ region = Rect2(128, 160, 32, 32)
 [sub_resource type="Resource" id="Resource_doo2w"]
 script = ExtResource("11_pucrt")
 
-[node name="MianMenue" type="Control"]
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

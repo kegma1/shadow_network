@@ -40,6 +40,11 @@ var gravity = 9.8
 @onready var light_level = $ui/TextureProgressBar
 @onready var debug_texture_rect = $test_ui/TextureRect
 
+@onready var guncam_container = $Rig/Camera3D/SubViewportContainer
+@onready var guncam_container_subviewport = $Rig/Camera3D/SubViewportContainer/SubViewport
+@onready var ui = $ui
+
+
 
 var cyberdeck_focus = false : 
 	set(new_value):
@@ -65,7 +70,10 @@ var cyberdeck_focus = false :
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
+	var resolution = get_viewport().size
+	guncam_container.size = resolution
+	guncam_container_subviewport.size = resolution
+	ui.size = resolution
 
 func _input(event):
 	if event is InputEventMouseMotion and !cyberdeck_focus:
