@@ -554,7 +554,6 @@ address = "10.0.0.3"
 hostname = "onyxcraft"
 type = "server"
 physical_device = NodePath("../../../../QodotMap/entity_6_HomeServerTEST")
-discoverd_flags = 15
 
 [node name="device_10_0_0_5" type="Node" parent="network_manager/testnet1/testSwitch1" node_paths=PackedStringArray("physical_device")]
 script = ExtResource("14_rjb22")
@@ -562,7 +561,6 @@ address = "10.0.0.5"
 hostname = "HP3k"
 type = "cyberdeck"
 physical_device = NodePath("../../../../QodotMap/entity_15_WallJackTEST")
-discoverd_flags = 8
 
 [node name="device_10_0_0_4" type="Node" parent="network_manager/testnet1" node_paths=PackedStringArray("physical_device")]
 script = ExtResource("14_rjb22")
@@ -570,7 +568,6 @@ address = "10.0.0.4"
 hostname = "HP3k"
 type = "cyberdeck"
 physical_device = NodePath("../../../QodotMap/entity_9_WallJackTEST")
-discoverd_flags = 8
 
 [node name="testnet2" type="Node" parent="network_manager" node_paths=PackedStringArray("physical_device")]
 script = ExtResource("13_d5f1e")

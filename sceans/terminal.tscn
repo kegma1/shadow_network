@@ -63,6 +63,7 @@ help = "You just used this command meow-fucka, read the screen and figure it out
 [node name="Network" type="Node" parent="command_handeler"]
 script = ExtResource("3_a3hmq")
 command_handler_target = NodePath("..")
+module_description = "Basic tools for network exporing"
 
 [node name="ping" type="Node" parent="command_handeler/Network"]
 script = ExtResource("3_fslvl")
@@ -75,5 +76,11 @@ script = ExtResource("3_fslvl")
 argument_names = Array[String](["address"])
 argument_types = Array[int]([2])
 help = "Finds every device between you and the given address."
+
+[node name="host" type="Node" parent="command_handeler/Network"]
+script = ExtResource("3_fslvl")
+argument_names = Array[String](["Address"])
+argument_types = Array[int]([2])
+help = "Gets the hostname of a device with a given address"
 
 [connection signal="text_submitted" from="VBoxContainer/ConsolePrompt" to="." method="_on_console_prompt_text_submitted"]

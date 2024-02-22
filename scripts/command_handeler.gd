@@ -53,6 +53,17 @@ func on_command_traceroute(console, args):
 		
 	console.push_message("Failed to find host %s" % args[0])
 	
+func on_command_host(console, args):
+	if not console.current_port:
+		console.push_message("Not connected to a network")
+		return
 	
+	var result = console.current_port.network_manager.host(args[0], console.current_port.address)
+	if result:
+		console.push_message("%s has hostname %s" % [args[0], result[0]])
+		console.push_message("%s is a %s" % [result[0], result[1]])
+		return
 		
+	console.push_message("Failed to find host %s" % args[0])
+	
 

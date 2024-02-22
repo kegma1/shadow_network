@@ -109,7 +109,33 @@ func traceroute(dest_address: String, from_address: String):
 	emit_signal("tree_updated")
 	return output
 	
-			
+func host(dest_address: String, from_address: String):
+	if not is_same_subnet(dest_address, from_address):
+		return null
+	
+	var standard_gateway = get_standard_gateway_address(from_address)
+	var subnet: NetworkDevice
+	for net in get_children():
+		if net.address == standard_gateway:
+			subnet = net
+	
+	if not subnet:
+		return null
+		
+	var device = subnet.find_device_by_address(dest_address)
+	if not device:
+		return null
+	if device is AbstractWallPort and not device.connected_to:
+		return null
+	if not device.is_info_discoverd(NetworkDevice.InfoType.Adress):
+		return null
+	
+	device.discover_info(NetworkDevice.InfoType.Hostname | NetworkDevice.InfoType.Type)
+	emit_signal("tree_updated")
+	return [device.hostname, device.type]
+		
+	
+
 func find_path_to_meet(from, to):
 	var path:Array[NetworkDevice] = [from]
 	if from == to:
